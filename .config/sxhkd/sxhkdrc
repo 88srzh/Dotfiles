@@ -4,8 +4,8 @@
 
 # terminal emulator
 super + Return
-	    kitty
-	
+	kitty
+
 # program launcher
 super + @space
 	dmenu_run
@@ -34,9 +34,9 @@ super + m
 super + y
 	bspc node newest.marked.local -n newest.!automatic.local
 
-# swap the current node and the biggest node
+# swap the current node and the biggest window
 super + g
-	bspc node -s biggest
+	bspc node -s biggest.window
 
 #
 # state/flags
@@ -62,9 +62,9 @@ super + {_,shift + }{h,j,k,l}
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
-# focus the next/previous node in the current desktop
+# focus the next/previous window in the current desktop
 super + {_,shift + }c
-	bspc node -f {next,prev}.local
+	bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -119,3 +119,13 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# move to next window
+#ctrl + alt + shift + {down,up}
+  #  DIR={next,prev}; \
+ #   bspc node -d "$DIR"; \
+#    bspc desktop -f "$DIR"
+
+# move to next desktop
+	#bspc desktop -f next; \
+	#bspc desktop -f next
