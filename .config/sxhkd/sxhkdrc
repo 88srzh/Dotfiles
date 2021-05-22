@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	kitty
+	urxvt
 
 # program launcher
 super + @space
@@ -120,12 +120,20 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# move to next window
-#ctrl + alt + shift + {down,up}
-  #  DIR={next,prev}; \
- #   bspc node -d "$DIR"; \
-#    bspc desktop -f "$DIR"
+# volume control
+XF86AudioLowerVolume
+	amixer set Master 5%-
+XF86AudioRaiseVolume
+	amixer set Master 5%+
+XF86AudioMute
+	amixer set Master toggle
 
-# move to next desktop
-	#bspc desktop -f next; \
-	#bspc desktop -f next
+# brightness control
+XF86MonBrightnessDown
+	xbacklight -dec5
+XF86MonBrightnessUp
+	xbacklight -inc5
+
+# lockscreen
+super + x
+	betterlockscreen -l dimblur
