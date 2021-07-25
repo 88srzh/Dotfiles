@@ -66,6 +66,7 @@ floating_modifier $mod
 bindsym $mod+Return exec kitty
 bindsym $mod+B exec google-chrome
 bindsym $mod+N exec nautilus
+bindsym $mod+C exec code
 
 # kill focused window
 bindsym $mod+Shift+q kill
