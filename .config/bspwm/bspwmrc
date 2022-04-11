@@ -2,17 +2,31 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor HDMI-0 -d 1 2 3 4 5
 setxkbmap -option grp:alt_shift_toggle us,ru &
 xrandr -s 1920x1080
 $HOME/.config/polybar/launch.sh --forest
 
 bspc config border_width         2
 bspc config window_gap          12
-
+bspc config top_padding		30
+bspc config left_padding	10
+bspc config right_padding	10
+bspc config single_monocle	false
+bspc config gapless_monocle	true
+bspc config focus_follows_pointer true
+bspc config pointer_follow_focus true 
+bspc config pointer_modifier mod4
+bspc config borderless_monocle true
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
+bspc config remove_disabled_monitors true
+bspc config merge_overlapping_monitors true
+bspc config
 bspc config split_ratio          0.52
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+#bspc config borderless_monocle   true
+bspc config
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
@@ -23,25 +37,21 @@ bspc rule -a telegram-desktop desktop='^3' follow=on
 
 #set your wallpaper upon logging in &
 
-feh --bg-fill $HOME/Pictures/wall-1920x1080.jpg &
+#feh --bg-fill $HOME/Pictures/wall-1920x1080.jpg &
 
 #This invokes pywal with your image simply replace the path
 
-wal -i $HOME/Pictures/wall-1920x1080.jpg 
+wal -i $HOME/Pictures/wall-boobs-1920-1080.jpg 
 
-bspc config normal_border_color "$color1"
-
-bspc config active_border_color "$color2"
-
-bspc config focused_border_color "$color15"
-
+bspc config normal_border_color "D4D4D4"
+bspc config active_border_color "C586C0"
+bspc config focused_border_color "CE8178"
+bspc config presel_feedback_color "646696"
 #Use the line below if you are on bspwm >= 0.9.4
 
-bspc config presel_feedback_color "$color1"
 
 #place the focus on where the mouse is; if you like clicking windows to focus, comment this line
 
-bspc config focus_follows_pointer true
 
 #Define window settings
 
@@ -51,6 +61,3 @@ bspc config window_gap 12
 
 bspc config split_ratio 0.52
 
-bspc config borderless_monocle true
-
-bspc config gapless_monocle true
