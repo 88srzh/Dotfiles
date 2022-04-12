@@ -1,11 +1,12 @@
 #! /bin/sh
 
+$HOME/.config/bspwm/autostart.sh &
+
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor HDMI-0 -d 1 2 3 4 5
+bspc monitor HDMI-0 -d 1 2 3 4 5 6 7 8 9 10
 setxkbmap -option grp:alt_shift_toggle us,ru &
-xrandr -s 1920x1080
-$HOME/.config/polybar/launch.sh --forest
+xrandr $HOME/.screenlayout/screenlayout.sh
 
 bspc config border_width         2
 bspc config window_gap          12
@@ -23,10 +24,8 @@ bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner
 bspc config remove_disabled_monitors true
 bspc config merge_overlapping_monitors true
-bspc config
 bspc config split_ratio          0.52
 #bspc config borderless_monocle   true
-bspc config
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
