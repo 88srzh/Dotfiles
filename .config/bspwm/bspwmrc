@@ -6,9 +6,9 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc monitor HDMI-0 -d 1 2 3 4 5 6 7 8 9 10
 setxkbmap -option grp:alt_shift_toggle us,ru &
-#xrandr -s 1920x1080 *
+xrandr -s 1920x1080 
 #xrandr $HOME/.screenlayout/screenlayout.sh
-picom --config $HOME/.config/picom/picom.conf &
+#picom --config $HOME/.config/picom/picom.conf &
 
 bspc config border_width         2
 bspc config window_gap          12
@@ -38,12 +38,12 @@ bspc rule -a telegram-desktop desktop='^3' follow=on
 
 #set your wallpaper upon logging in &
 
-feh --bg-fill $HOME/Pictures/wall-afrosamurai2-1920.jpg &
+feh --bg-fill $HOME/Pictures/wall-anime-all-1920x1080.png &
 
 #This invokes pywal with your image simply replace the path
 
 
-wal -i $HOME/Pictures/wall-afrosamurai2-1920.jpg &
+#wal -i $HOME/Pictures/wall-anime-all-1920x1080.png &
 
 bspc config normal_border_color "D4D4D4"
 bspc config active_border_color "C586C0"
