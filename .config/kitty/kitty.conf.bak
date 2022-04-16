@@ -6,7 +6,7 @@
 #: individual font faces and even specify special fonts for particular
 #: characters.
 
-font_family      JetBrains Mono Regular 9.0
+font_family      JetBrains Mono
 bold_font        JetBrains Mono Bold
 italic_font      JetBrains Mono Italic
 bold_italic_font JetBrains Mono Bold Italic
@@ -23,7 +23,7 @@ bold_italic_font JetBrains Mono Bold Italic
 #:     italic_font      Operator Mono Book Italic
 #:     bold_italic_font Operator Mono Medium Italic
 
-font_size 14.0
+font_size 11.0
 
 #: Font size (in pts)
 
@@ -974,6 +974,6 @@ map kitty_mod+a>l    set_background_opacity -0.1
 
 
 # BEGIN_KITTY_THEME
-# Catppuccin
+# Srcery
 include current-theme.conf
 # END_KITTY_THEME

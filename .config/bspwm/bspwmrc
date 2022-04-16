@@ -8,7 +8,7 @@ bspc monitor HDMI-0 -d 1 2 3 4 5 6 7 8 9 10
 setxkbmap -option grp:alt_shift_toggle us,ru &
 xrandr -s 1920x1080 
 #xrandr $HOME/.screenlayout/screenlayout.sh
-#picom --config $HOME/.config/picom/picom.conf &
+picom --config $HOME/.config/picom/picom.conf &
 
 bspc config border_width         2
 bspc config window_gap          12
@@ -39,6 +39,7 @@ bspc rule -a telegram-desktop desktop='^3' follow=on
 #set your wallpaper upon logging in &
 
 feh --bg-fill $HOME/Pictures/wall-anime-all-1920x1080.png &
+xsetroot -cursor_name left_ptr &
 
 #This invokes pywal with your image simply replace the path
 
@@ -63,3 +64,7 @@ bspc config window_gap 12
 
 bspc config split_ratio 0.52
 
+picom --experimental-backends &
+bspc config border_width 0
+bspc config border_width 0
+picom --experimental-backends &
