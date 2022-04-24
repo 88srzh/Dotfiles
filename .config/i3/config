@@ -28,7 +28,11 @@ floating_modifier $mod
 exec --no-startup-id dex-autostart --autostart --environment i3
 # exec --no-startup-id compton -b
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec_always --no-startup-id ~/.config/polybar/launch.sh &
+
+# Betterlockscreen
+exec --no-startup-id betterlockscreen -w dim
+
+#exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -213,8 +217,11 @@ exec_always picom -f
 # i3lock wallpaper
 # set $i3lockwall i3lock -i ~/Pictures/i3lock-wall.png -t
 
+# Keybinding for betterlockscreen
+bindsym $mod+x exec betterlockscreen -l dim
+
 # Keybinding for i3lock
-bindsym $mod+x exec i3lock
+#bindsym $mod+x exec i3lock
 
 bindsym $mod+r mode "resize"
 
