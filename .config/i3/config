@@ -45,9 +45,6 @@ exec --no-startup-id betterlockscreen -w dim
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# exec "setxkbmap -layout us,ru"
-# exec "setxkbmap -option 'grp:alt_shift_toggle'"
-
 exec_always "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:alt_shift_toggle"
 
 # Use pactl to adjust volume in PulseAudio.
@@ -67,8 +64,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+b exec google-chrome-stable;workspace 2
 bindsym $mod+Shift+i exec intellijidea-ce
 
-# start dmenu (a program launcher)
-# bindsym $mod+d exec --no-startup-id dmenu_run
+# start rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun -theme fancy
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -204,8 +200,6 @@ mode "resize" {
 }
 
 # Display resolution
-# exec_always xrandr --output HDMI-0 -- mode 1920x1080
-# exec --no-startup-id arandr ~/.screenlayout/screenlayout.sh
 exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080
 
 # Display wallpapers
@@ -213,9 +207,6 @@ exec_always feh --bg-fill ~/Pictures/ghost-in-the-shell-town-1920.jpg
 
 # Window compositor
 exec_always picom -f
-
-# i3lock wallpaper
-# set $i3lockwall i3lock -i ~/Pictures/i3lock-wall.png -t
 
 # Keybinding for betterlockscreen
 bindsym $mod+l exec betterlockscreen -l dim
