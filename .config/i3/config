@@ -7,6 +7,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $Alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -17,7 +18,8 @@ floating_modifier $mod
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+
+exec xrdb -merge ~/.Xresources
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -32,7 +34,6 @@ exec --no-startup-id betterlockscreen -w dim
 # Polybar
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh --blocks
 
-# exec --no-startup-id killall polybar; polybar -r bar
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -53,9 +54,6 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
 # start a terminal
 bindsym $mod+Return exec kitty
 
@@ -65,6 +63,13 @@ bindsym $mod+Shift+i exec intellijidea-ce
 
 # start rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun -theme fancy
+
+# bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'JetBrains Mono Regular 8'
+
+# bindsym $mod+m exec --no-startup-id menu_mpd
+# bindsym $mod+n exec --no-startup-id menu_network
+# bindsym $mod+p exec --no-startup-id ~/.config/rofi/bin/menu_powermenu
+
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -136,11 +141,6 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-
-#Assign programs to workspaces
-# assign [class="kitty"] => $ws1
-# for_window [class="google-chrome-stable"] move to workspace $ws2
-
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -214,7 +214,7 @@ bindsym $mod+l exec betterlockscreen -l dim
 for_window [class="^.*"] border pixel 3
 
 # Flameshot
-bindsym $mod+p exec flameshot gui
+# bindsym $mod+p exec flameshot gui
 
 bindsym $mod+r mode "resize"
 
@@ -230,7 +230,7 @@ bar {
 	status_command i3status -c ~/.config/i3status/i3status.conf
 #	status_command ~/.config/Conky/conky-i3bar
 	colors {
-#	statusline #ceecee
+	statusline #ceecee
 	statusline #ffffff
 	separator #fefefe
 	}
