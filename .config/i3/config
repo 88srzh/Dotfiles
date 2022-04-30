@@ -29,8 +29,10 @@ exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 # Betterlockscreen
 exec --no-startup-id betterlockscreen -w dim
 
-#exec_always --no-startup-id ~/.config/polybar/launch.sh &
+# Polybar
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh --blocks
 
+# exec --no-startup-id killall polybar; polybar -r bar
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -200,7 +202,7 @@ mode "resize" {
 exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080
 
 # Display wallpapers
-exec_always feh --bg-fill ~/Pictures/ghost-in-the-shell-town-1920.jpg
+exec_always feh --bg-fill ~/Pictures/betterlockscreenWallpapers/japan-nature-wallpaper.jpg
 
 # Window compositor
 exec_always picom -f
@@ -208,14 +210,29 @@ exec_always picom -f
 # Keybinding for betterlockscreen
 bindsym $mod+l exec betterlockscreen -l dim
 
-# Keybinding for i3lock
-#bindsym $mod+x exec i3lock
+# Remove border and title
+for_window [class="^.*"] border pixel 3
+
+# Flameshot
+bindsym $mod+p exec flameshot gui
 
 bindsym $mod+r mode "resize"
+
+# gaps
+gaps inner 6
+gaps outer 0
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-#	status_command i3status -c ~/.config/i3status/i3status.conf
-	status_command ~/.config/Conky/conky-i3bar
+#	mode invisible
+	position top
+	status_command i3status -c ~/.config/i3status/i3status.conf
+#	status_command ~/.config/Conky/conky-i3bar
+	colors {
+#	statusline #ceecee
+	statusline #ffffff
+	separator #fefefe
+	}
 }
+
