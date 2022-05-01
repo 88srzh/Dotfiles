@@ -7,7 +7,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $Alt Mod1
+set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -19,7 +19,7 @@ floating_modifier $mod
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 
-exec xrdb -merge ~/.Xresources
+exec xrdb -merge ~/Xresources
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -30,6 +30,7 @@ exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 
 # Betterlockscreen
 exec --no-startup-id betterlockscreen -w dim
+exec --no-startup-id xss-lock --transfer-sleep-lock --betterlockscreen --lock
 
 # Polybar
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh --blocks
@@ -126,6 +127,9 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+# Lazygit
+bindsym $mod+Shift+g exec lazygit
+
 # focus the child container
 #bindsym $mod+d focus child
 
@@ -173,6 +177,17 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+mode "move-workspace" {
+	bindsym h move workspace to output left
+	bindsym l move workspace to output right
+
+	# back to normal: Escape or $mod+r
+	bindsym Return mode "default"
+	bindsym $mod+r mode "default"
+}
+
+bindsym $mod+m mode "move-workspace"
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -214,7 +229,7 @@ bindsym $mod+l exec betterlockscreen -l dim
 for_window [class="^.*"] border pixel 3
 
 # Flameshot
-# bindsym $mod+p exec flameshot gui
+bindsym $mod+p exec flameshot gui
 
 bindsym $mod+r mode "resize"
 
@@ -225,14 +240,17 @@ gaps outer 0
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-#	mode invisible
 	position top
 	status_command i3status -c ~/.config/i3status/i3status.conf
 #	status_command ~/.config/Conky/conky-i3bar
 	colors {
-	statusline #ceecee
-	statusline #ffffff
-	separator #fefefe
+	background #2f343f
+	statusline #2f343f
+	separator #4b5262
+
+	# color of border, background and text
+#	focused_workspace	#2f343f #bf616a #d8dee8
+#	active_workspace	#2f343f #2f343f #d8dee8
 	}
 }
 
