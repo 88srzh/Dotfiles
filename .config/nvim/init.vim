@@ -1,9 +1,19 @@
 call plug#begin()
 
 Plug 'https://github.com/vim-airline/vim-airline'
+" file and folder management
 Plug 'https://github.com/preservim/nerdtree'
+
 Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'https://github.com/neoclide/coc.nvim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" dart
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc-dart'
+
+" snippets
+Plug 'natebosch/dartlang-snippets'
 " Plug 'neovim/nvim-lspconfig'
 " Plug 'hrsh7th/nvim-cmp'
 " Plug 'hrsh7th/cmp-nvim-lsp'
@@ -16,6 +26,11 @@ Plug 'https://github.com/neoclide/coc.nvim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
+
+let g:lsc_auto_map = v:true
+
+" enable html syntax highlighting inside dart strings
+let dart_html_in_string=v:true
 
 set number
 set relativenumber
@@ -76,6 +91,25 @@ set et sw=4 sts=4 ts=4
 
 " clear last search patters by hitting ESC in normal mode
 nnoremap <ESC> :noh<CR><ESC>
+
+" flutter
+nnoremap <leader>fe :CocCommand flutter.emulators <CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-c> :NERDTreeToggle<CR>
 
+let g:dart_format_on_save = 1
+let g:dartfmt_options = ['--fix', '--line-length 120']
+
+nmap <C-P> :FZF<CR>
+
+" coc config
+let g:coc_global_extensions = [
+    \ 'coc-snippets',
+    \ 'coc-eslint',
+    \ 'coc-prettier',
+    \ 'coc-json',
+    \ 'coc-flutter',
+    \ 'coc-yaml',
+    \ 'coc-css',
+    \ 'coc-html'
+    \    ]
