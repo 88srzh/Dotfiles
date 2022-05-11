@@ -1,46 +1,35 @@
-# Should you change your keyboard layout some time, delete
-# this file and re-run i3-config-wizard(1).
-
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
 set $mod Mod4
 set $alt Mod1
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
 font pango:JetBrains Mono Regular 9
 
 # Use mouse+$super to drag floating windows to their wanted position
 floating_modifier $mod
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-
 exec --no-startup-id xrdb -merge ~/.Xresources
 
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
 # autostart
 exec --no-startup-id dex-autostart --autostart --environment i3
 # exec --no-startup-id compton -b
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+# exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+
+# Autotiling
+exec_always --no-startup-id autotiling
 
 # Betterlockscreen
 exec --no-startup-id betterlockscreen -w dim
 exec --no-startup-id xss-lock --transfer-sleep-lock --betterlockscreen --lock
 
+# Alternating-layout
+exec --no-startup-id ~/Downloads/git/i3-alternating-layout/alternating_layouts.py
+
 # Polybar
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh --blocks
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
 exec_always --no-startup-id  "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:alt_shift_toggle"
@@ -62,11 +51,7 @@ bindsym $mod+Shift+i exec intellijidea-ce
 # start rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun -theme fancy
 
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
-
-# change volume                                                                 
+# change volume                                                             
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+                     
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-                     
 bindsym Ctrl+$alt+u  exec amixer set Master 3%+
@@ -83,7 +68,6 @@ bindsym XF86AudioStop exec mpc stop
 
 # kill focused window
 bindsym $mod+c kill
-bindsym $alt+F4 kill
 
 # change focus
 bindsym $mod+h focus left
@@ -139,7 +123,6 @@ bindsym $mod+Shift+g exec lazygit
 # focus the child container
 #bindsym $mod+d focus child
 
-# Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: "
 set $ws2 "2: "
@@ -207,7 +190,7 @@ mode "resize" {
         bindsym j resize grow height 5 px or 5 ppt
         bindsym k resize shrink height 5 px or 5 ppt
         bindsym l resize grow width 5 px or 5 ppt
-	bindsym Return mode "default"
+    	bindsym Return mode "default"
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 5 px or 5 ppt
@@ -239,11 +222,16 @@ bindsym $alt+l exec betterlockscreen -l dim
 for_window [class="^.*"] border pixel 4
 
 # Flameshot
-bindsym $mod+p exec flameshot gui
+bindsym $mod+p exec --no-startup-id flameshot gui -p ~/Pictures/Screenshots
+
+# borders
+# default_border pixel 4
 
 # gaps
-gaps inner 6
-gaps outer 0
+gaps inner 5
+gaps outer 2
+#smart_gaps on
+
 
 # color of border, background, text, indicator and child_border
 client.focused			#bf616a #2f343f #d8dee8 #bf616a #d8dee8
@@ -255,17 +243,18 @@ client.background		#2f343f
 
 bar {
 	position top
-	status_command i3status -c ~/.config/i3status/i3status.conf
-	colors {
-	background #2f343f
-	statusline #2f343f
-	separator #4b5262
+#	status_command i3status -c ~/.config/i3status/i3status.conf
+    status_command exec ~/.config/i3status/i3status_py/mybar.sh
+#	colors {
+#	background #2f343f
+#	statusline #2f343f
+#	separator #4b5262
 
 	# color of border, background and text
-	focused_workspace	#2f343f #bf616a #d8dee8
-	active_workspace	#2f343f #2f343f #d8dee8
-	inactive_workspace	#2f343f #2f343f #d8dee8
-	urgent_workspace	#2f343f #ebcb8b #2f343f
-	}
+#	focused_workspace	#2f343f #bf616a #d8dee8
+#	active_workspace	#2f343f #2f343f #d8dee8
+#	inactive_workspace	#2f343f #2f343f #d8dee8
+#	urgent_workspace	#2f343f #ebcb8b #2f343f
+#	}
 }
 
