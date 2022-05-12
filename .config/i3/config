@@ -219,7 +219,7 @@ exec_always --no-startup-id picom -f
 bindsym $alt+l exec betterlockscreen -l dim
 
 # Remove border and title
-for_window [class="^.*"] border pixel 4
+for_window [class="^.*"] border pixel 2
 
 # Flameshot
 bindsym $mod+p exec --no-startup-id flameshot gui -p ~/Pictures/Screenshots

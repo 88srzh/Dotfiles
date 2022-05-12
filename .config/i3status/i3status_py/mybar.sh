@@ -134,7 +134,6 @@ meteo() {
 }
 
 mydate() {
-#  local bg="#E0E0E0"
   local bg="#80A1C1"
   separator $bg "#546E7A"
   echo -n ",{"
@@ -170,7 +169,7 @@ battery0() {
 }
 
 volume() {
-  local bg="#673AB7"
+  local bg="#FFD180"
   separator $bg $bg_separator_previous  
   vol=$(pamixer --get-volume)
   echo -n ",{"
@@ -180,6 +179,7 @@ volume() {
   else
     echo -n "\"full_text\":\"  ${vol}% \","
   fi
+  echo -n "\"color\":\"#000000\","
   echo -n "\"background\":\"$bg\","
   common
   echo -n "},"
@@ -212,19 +212,20 @@ echo '[]'                   # We send an empty first array of blocks to make the
 (while :;
 do
 	echo -n ",["
-  mycrypto
-  myip_public
+#  mycrypto
+#  myip_public
   myvpn_on
-  myip_local
+#  myip_local
   disk_usage
   memory
   cpu_usage
   meteo
+#  volume
   mydate
-  battery0
+#  battery0
   volume
   systemupdate
-  logout
+#  logout
   echo "]"
 	sleep 10
 done) &
