@@ -23,9 +23,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock --betterlockscreen --lock
 # Alternating-layout
 exec --no-startup-id ~/Downloads/git/i3-alternating-layout/alternating_layouts.py
 
-# Polybar
-# exec_always --no-startup-id $HOME/.config/polybar/launch.sh --blocks
-
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -180,12 +177,8 @@ bindsym $mod+m mode "move-workspace"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
+        # These bindings trigger as soon as you enter the resize mode
         bindsym h resize shrink width 5 px or 5 ppt
         bindsym j resize grow height 5 px or 5 ppt
         bindsym k resize shrink height 5 px or 5 ppt
@@ -218,19 +211,19 @@ exec_always --no-startup-id picom -f
 # Keybinding for betterlockscreen
 bindsym $alt+l exec betterlockscreen -l dim
 
-# Remove border and title
-for_window [class="^.*"] border pixel 2
-
 # Flameshot
 bindsym $mod+p exec --no-startup-id flameshot gui -p ~/Pictures/Screenshots
 
-# borders
-# default_border pixel 4
+# Remove border and title
+for_window [class="^.*"] border pixel 2
 
 # gaps
 gaps inner 5
-gaps outer 2
-#smart_gaps on
+gaps outer 1
+
+smart_borders on
+smart_gaps on
+#border_radius 2
 
 
 # color of border, background, text, indicator and child_border
@@ -245,6 +238,7 @@ bar {
 	position top
 #	status_command i3status -c ~/.config/i3status/i3status.conf
     status_command exec ~/.config/i3status/i3status_py/mybar.sh
+
 #	colors {
 #	background #2f343f
 #	statusline #2f343f
