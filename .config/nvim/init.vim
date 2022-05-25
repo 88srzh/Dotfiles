@@ -3,12 +3,19 @@ call plug#begin()
 Plug 'https://github.com/vim-airline/vim-airline'
 " file and folder management
 Plug 'https://github.com/preservim/nerdtree'
-
 Plug 'https://github.com/ryanoasis/vim-devicons'
-Plug 'https://github.com/neoclide/coc.nvim'
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/goyo.vim'
+Plug 'vimwiki/vimwiki'
+
+" language support
+Plug 'jiangmiao/auto-pairs'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " dart
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
 Plug 'natebosch/vim-lsc'
 Plug 'natebosch/vim-lsc-dart'
 
@@ -40,7 +47,6 @@ set tabstop=4
 set shiftwidth=4
 set smarttab
 set softtabstop=4
-
 
 " hide buffers instead of saving
 set hidden
@@ -113,3 +119,31 @@ let g:coc_global_extensions = [
     \ 'coc-css',
     \ 'coc-html'
     \    ]
+
+set nocompatible
+filetype plugin on
+syntax on
+
+" Goyo settings
+function! s:goyo_enter()
+  if has('gui_running')
+    set fullscreen
+    set background=light
+    set linespace=7
+  elseif exists('$TMUX')
+    silent !tmux set status off
+  endif
+endfunction
+
+function! s:goyo_leave()
+  if has('gui_running')
+    set nofullscreen
+    set background=dark
+    set linespace=0
+  elseif exists('$TMUX')
+    silent !tmux set status on
+  endif
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
