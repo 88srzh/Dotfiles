@@ -52,7 +52,16 @@ set softtabstop=4
 set hidden
 
 " flash screen instead of sound
-set visualbell
+set novisualbell
+
+set wrap
+set linebreak
+
+set showtabline=1
+
+set termencoding=utf-8
+
+set backspace=indent,eol,start whichwrap+=<,>,[,]
 
 " encoding
 set encoding=utf-8
@@ -65,12 +74,16 @@ set splitright
 " disable backups (because of coc plugin)
 set nobackup
 set nowritebackup
+set noswapfile
 
 " use system clipboard
 set clipboard=unnamedplus
 
 " disable status
 set noshowmode
+
+set mousehide
+set mouse=a
 
 " colors
 set termguicolors
