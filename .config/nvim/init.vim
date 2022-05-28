@@ -8,6 +8,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " language support
 Plug 'jiangmiao/auto-pairs'
@@ -47,6 +50,8 @@ set tabstop=4
 set shiftwidth=4
 set smarttab
 set softtabstop=4
+
+set textwidth=120
 
 " hide buffers instead of saving
 set hidden
@@ -115,6 +120,10 @@ nnoremap <ESC> :noh<CR><ESC>
 nnoremap <leader>fe :CocCommand flutter.emulators <CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-c> :NERDTreeToggle<CR>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 let g:dart_format_on_save = 1
 let g:dartfmt_options = ['--fix', '--line-length 120']
