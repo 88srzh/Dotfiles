@@ -49,7 +49,7 @@ bindsym $mod+Shift+b exec google-chrome-stable;workspace 2
 bindsym $mod+Shift+i exec intellijidea-ce
 
 # start rofi
-bindsym $mod+d exec --no-startup-id rofi -show drun -theme fancy
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme dracula
 
 # change volume                                                             
 # bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+                    #bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-                     
