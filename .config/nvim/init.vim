@@ -100,6 +100,8 @@ colorscheme dracula
 " display diagnostic messages early
 set updatetime=300
 
+set showcmd
+
 " unsure
 set shortmess+=c
 
@@ -116,6 +118,8 @@ set et sw=4 sts=4 ts=4
 " clear last search patters by hitting ESC in normal mode
 nnoremap <ESC> :noh<CR><ESC>
 
+let mapleader=","
+
 " flutter
 nnoremap <leader>fe :CocCommand flutter.emulators <CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -124,6 +128,11 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fa :FlutterRun<cr>
+nnoremap <leader>fq :FlutterQuit<cr>
+nnoremap <leader>fr :FlutterHotReload<cr>
+nnoremap <leader>fR :FlutterHotRestart<cr>
+nnoremap <leader>fD :FlutterVisualDebug
 
 let g:dart_format_on_save = 1
 let g:dartfmt_options = ['--fix', '--line-length 120']
