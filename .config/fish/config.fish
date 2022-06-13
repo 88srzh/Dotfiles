@@ -7,9 +7,13 @@ set -x EDITOR nvim
 set -x GOBIN $HOME/.go/bin
 set -x GO111MODULE on
 
+alias n="$HOME/Downloads/git/neovide/target/release/neovide"
+alias b="/usr/bin/bpytop"
+alias news="/usr/bin/newsboat"
+
 set -x MOZ_ENABLE_WAYLAND 1
 
-set PATH $HOME/.go/bin $HOME/.local/bin /usr/local/sbin /usr/sbin $PATH
+set PATH $HOME/.go/bin $HOME/.local/bin /usr/local/sbin /usr/sbin $HOME/Downloads/flutter/bin $PATH
 # }}}
 
 # private envs {{{
