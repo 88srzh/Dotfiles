@@ -11,6 +11,8 @@ Plug 'vimwiki/vimwiki'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'dense-analysis/ale'
+Plug 'sheerun/vim-polyglot'
 
 " language support
 Plug 'jiangmiao/auto-pairs'
@@ -39,6 +41,11 @@ call plug#end()
 
 let g:lsc_auto_map = v:true
 
+" ALE
+let g:ale_fixers = {
+\   'dart': ['dartfmt'],
+\}
+
 " enable html syntax highlighting inside dart strings
 let dart_html_in_string=v:true
 
@@ -55,6 +62,8 @@ set textwidth=120
 
 " hide buffers instead of saving
 set hidden
+
+set completeopt-=preview
 
 " flash screen instead of sound
 set novisualbell
@@ -120,6 +129,8 @@ nnoremap <ESC> :noh<CR><ESC>
 
 let mapleader=","
 
+" call FlutterMenu()
+
 " flutter
 nnoremap <leader>fe :CocCommand flutter.emulators <CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -132,10 +143,14 @@ nnoremap <leader>fa :FlutterRun<cr>
 nnoremap <leader>fq :FlutterQuit<cr>
 nnoremap <leader>fr :FlutterHotReload<cr>
 nnoremap <leader>fR :FlutterHotRestart<cr>
-nnoremap <leader>fD :FlutterVisualDebug
+nnoremap <leader>fD :FlutterVisualDebug<cr>
+nnoremap <leader>df :DartFmt<cr>
 
 let g:dart_format_on_save = 1
-let g:dartfmt_options = ['--fix', '--line-length 120']
+
+if (!exists("g:dartfmt_options"))
+  let g:dartfmt_options = ['--fix', '-l 180']
+endif
 
 nmap <C-P> :FZF<CR>
 
