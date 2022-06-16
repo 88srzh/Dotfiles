@@ -33,6 +33,9 @@ Plug 'natebosch/dartlang-snippets'
 " Plug 'L3MON4D3/LuaSnip'
 " Plug 'scrooloose/nerdtree'
 
+" git
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
 
 " color schemas
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -145,6 +148,10 @@ nnoremap <leader>fr :FlutterHotReload<cr>
 nnoremap <leader>fR :FlutterHotRestart<cr>
 nnoremap <leader>fD :FlutterVisualDebug<cr>
 nnoremap <leader>df :DartFmt<cr>
+nnoremap <leader>gs :Git status<cr>
+nnoremap <leader>ga :Git add .<cr>
+nnoremap <leader>gp :Git push<cr>
+
 
 let g:dart_format_on_save = 1
 
