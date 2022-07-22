@@ -1,7 +1,7 @@
 set $mod Mod4
 set $alt Mod1
 
-font pango:JetBrains Mono Regular 9
+font pango:JetBrains Mono Regular 9, FontAwesome
 
 # Use mouse+$super to drag floating windows to their wanted position
 floating_modifier $mod
@@ -15,6 +15,7 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 
 # Autotiling
 exec_always --no-startup-id autotiling
+# exec_always --no-startup-id telegram-desktop 
 
 # Betterlockscreen
 exec --no-startup-id betterlockscreen -w dim
@@ -22,6 +23,11 @@ exec --no-startup-id xss-lock --transfer-sleep-lock --betterlockscreen --lock
 
 # Alternating-layout
 exec --no-startup-id ~/Downloads/git/i3-alternating-layout/alternating_layouts.py
+# Polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh &
+# exec_always --no-startup-id ~/Downloads/git/polybar-collection/launch.sh$
+#exec_always --no-startup-id $HOME/polybar-collection/launch.sh
+exec --no-startup-id dunst
 
 # sound
 exec --no-startup-id pulseaudio --start
@@ -30,7 +36,7 @@ exec --no-startup-id pulseaudio --start
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 
 exec_always --no-startup-id  "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:alt_shift_toggle"
 
@@ -45,11 +51,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym $mod+Return exec kitty
 
 # common apps keybinds
-bindsym $mod+Shift+b exec google-chrome-stable;workspace 2
-bindsym $mod+Shift+i exec intellijidea-ce
+# bindsym $mod+Shift+b exec google-chrome-stable;workspace 2
 
 # start rofi
-bindsym $mod+d exec --no-startup-id rofi -show drun -theme dracula
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme dracula -show-icons
 
 # change volume                                                             
 # bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+                    #bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-                     
@@ -205,7 +210,7 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080
 
 # Display wallpapers
-exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/anime_kawaii/*
+exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/night_anime_wall/*
 
 # Window compositor
 exec_always --no-startup-id picom -f
@@ -220,8 +225,8 @@ bindsym $mod+p exec --no-startup-id flameshot gui -p ~/Pictures/Screenshots
 for_window [class="^.*"] border pixel 2
 
 # gaps
-gaps inner 5
-gaps outer 1
+gaps inner8 
+# gaps outer 1
 
 smart_borders on
 smart_gaps on
@@ -236,10 +241,12 @@ client.urgent			#2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.placeholder		#2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.background		#2f343f
 
-bar {
-	position top
+# Others
+for_window [class="Lxappearance"] floating enable
+#bar {
+#	position top
 #	status_command i3status -c ~/.config/i3status/i3status.conf
-    status_command exec ~/.config/i3status/i3status_py/mybar.sh
+#    status_command exec ~/.config/i3status/i3status_py/mybar.sh
 
 #	colors {
 #	background #2f343f
@@ -252,5 +259,5 @@ bar {
 #	inactive_workspace	#2f343f #2f343f #d8dee8
 #	urgent_workspace	#2f343f #ebcb8b #2f343f
 #	}
-}
+#}
 
