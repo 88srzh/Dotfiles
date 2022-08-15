@@ -13,6 +13,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'dense-analysis/ale'
 Plug 'sheerun/vim-polyglot'
+Plug 'navarasu/onedark.nvim'
 
 " language support
 Plug 'jiangmiao/auto-pairs'
@@ -38,11 +39,17 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 
 " color schemas
-Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug '~/.config/nvim/colors/onedark.vim'
 
 call plug#end()
 
 let g:lsc_auto_map = v:true
+
+" Theme
+" let g:airline_theme='onedark'
+" let g:lightline = {'colorscheme' : 'onedark',}
+" let g:airline_theme='onedark'
 
 " ALE
 let g:ale_fixers = {
@@ -105,7 +112,11 @@ set mouse=a
 " colors
 set termguicolors
 set background=dark
-colorscheme dracula
+
+let g:onedark_config = {
+    \ 'style': 'darker',
+\}
+colorscheme onedark
 "highlight link HighlightedyankRegion Search
 "exe 'hi CursorLine ctermbg=0 guibg='.g:color0.' ctermfg=NONE guifg=NONE'
 
