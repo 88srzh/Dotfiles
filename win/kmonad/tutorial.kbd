@@ -1,44 +1,4 @@
-#| --------------------------------------------------------------------------
-
-  Welcome to the KMonad configuration tutorial. This document aims to explain:
-  1. The configuration syntax
-  2. The required information
-  3. All possible configuration options
-
-  This document should be a runnable configuration, so with some tweaks to the
-  `defcfg` block (see below) you should be able to try out all the examples
-  interactively.
-
-  -------------------------------------------------------------------------- |#
-
-
-#| --------------------------------------------------------------------------
-
-                     Basic syntax: comments and parentheses
-
-  KMonad's configuration language is styled on various lisps, like scheme or
-  Common Lisp. In a lisp, every statement is entered between '(' and ')'s. If
-  you are more used to Fortan style languages (python, ruby, C, Java, etc.), the
-  change is quite straightforward: the function name moves into the parentheses,
-  and you don't use commas to separate arguments. I.e.
-
-  This:     my_function(a, 3, "Alakazam")
-  Becomes:  (my_function a 3 "Alakazam")
-
-  The reason for this is because Lisp-style languages are very easy to parse and
-  write syntax-highlighters for.
-
-  We also provide standard Lisp syntax for comments:
-  - block comments between: #| and its reverse
-  - line comments following: ;;
-
-  Unlike standard lisp, a single ; does not denote a comment, but instead the
-  keycode for semicolon.
-
-  Also, as you might have noticed, whitespace is possible anywhere.
-
   To check for syntax errors while editing, invoke kmonad with the -d option.
-  -------------------------------------------------------------------------- |#
 
 
 #| --------------------------------------------------------------------------
@@ -50,28 +10,6 @@
   Many of these settings have default values, but a minimal definition must
   include at least an 'input' field and an 'output' field. These describe how
   KMonad captures its inputs and how it emits its outputs.
-
-  First, let's go over the optional, non-OS specific settings. Currently there is
-  only 2:
-
-  - fallthrough: `true` or `false`, defaults to `false`
-
-    KMonad catches input events and tries to match them to various handlers. If
-    it cannot match an event to any handler (for example, if it isn't included
-    in the `defsrc` block, or if it is, but the current keymap does not map any
-    buttons to it), then the event gets quietly ignored. If `fallthrough` is set
-    to `true`, any unhandled events simply get reemitted.
-
-  - allow-cmd: `true` or `false`, defaults to `false`
-
-    If this is set to `false`, any action that runs a shell-command will simply
-    log to `stdout` without ever running (log-level info). Don't ever enable
-    this on a configuration that you do not trust, because:
-
-      (cmd-button "rm -rf ~/*")
-
-    is a thing. For more information on the `cmd-button' function, see the
-    section on Command buttons below.
 
   There are also some optional OS specific settings that we support:
 
@@ -167,7 +105,7 @@
   fallthrough true
 
   ;; Set this to false to disable any command-execution in KMonad
-  allow-cmd true
+  allow-cmd false
 )
 
 
