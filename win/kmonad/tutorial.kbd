@@ -1,7 +1,3 @@
-  To check for syntax errors while editing, invoke kmonad with the -d option.
-
-
-#| --------------------------------------------------------------------------
 
 (defcfg
   ;; For Linux
@@ -25,78 +21,16 @@
   fallthrough true
 
   ;; Set this to false to disable any command-execution in KMonad
-  allow-cmd false
+  ;; allow-cmd false
 )
 
-
-#| --------------------------------------------------------------------------
-                         Necessary: the `defsrc` block
-
-  It is difficult to explain the `defsrc` block without immediately going into
-  `deflayer` blocks as well. Essentially, KMonad maps input-events to various
-  internal actions, many of which generate output events. The `defsrc` block
-  explains the layout on which we specify our `deflayer`s down the line.
-
-  It is important to realize that the `defsrc` block doesn't *necessarily* have
-  to coincide with your actual input keyboard. You can specify a full 100%
-  `defsrc` block, but only use a 40% keyboard. This will mean that every
-  `deflayer` you specify will also have to match your 100% `defsrc`, and that
-  your actual keyboard would be physically unable to trigger about 60% of your
-  keymap, but it would be perfectly valid syntax.
-
-  The dual of this (and more useful) is that it is also perfectly valid to only
-  specify that part of your keyboard in `defsrc` that you want to remap. If you
-  use a 100% keyboard, but don't want to remap the numpad at all you can simply
-  leave the numpad out of your `defsrc`, and it should work just fine. In that
-  particular case you probably want to set `fallthrough` to `true` in your
-  `defcfg` block though.
-
-  In the future we would like to provide support for multiple, named `defsrc`
-  blocks, so that it becomes easier to specify various layers for just the
-  numpad, for example, but at the moment any more or less than 1 `defsrc` block
-  will result in an error.
-
-  The layouting in the `defsrc` block is completely free, whitespace simply gets
-  ignored. We strive to provide a name for every keycode that is no longer than
-  4 characters, so we find that laying out your keymap in columns of 5 works out
-  quite nicely (although wider columns will allow for more informative aliases,
-  see below).
-
-  Most keycodes should be obvious. If you are unsure, check
-  './src/KMonad/Keyboard/Keycode.hs'. Every Keycode has a name corresponding to
-  its Keycode name, but all lower-case and with the 'Key' prefix removed. There
-  are also various aliases for Keycodes starting around line 350. If you are
-  trying to bind a key and there is not a 4-letter alias, please file an issue,
-  or better yet, a pull-request, and it will be added promptly.
-
-  Also, you can consult './keymap/template/' for various input templates to use
-  directly or to look up keycodes by position. Here we use the input-template
-  for 'us_ansi_60.kbd'
-
-  -------------------------------------------------------------------------- |#
-
 (defsrc
+  esc  f1   f2   f3   f4   f5  f6    f7   f8   f9   f10  f11  f12
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet cmp  rctl
-)
-
-(deflayer mylayer
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  @switch  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  @cesc    a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft @mymac    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet cmp  rctl
-)
-
-(deflayer number 
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    3    e    r    t    y    7    8    9    0    [    ]    \
-  caps a    s    d    f    g    h    4    5    6    ;    '    ret
-  lsft z    x    c    v    b    n    1    2    3    /    rsft
-  lctl lmet lalt           spc            ralt rmet cmp  rctl
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft		     	    up
+  lctl lmet lalt           spc            ralt rmet cmp  rctl		     left   down   right
 )
 
 (deflayer qwerty 
@@ -107,107 +41,27 @@
   lctl lmet lalt           spc            ralt rmet cmp  rctl
 )
 
+(deflayer numbers
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    3    e    r    t    y    7    8    9    0    [    ]    \
+  caps a    s    d    f    g    h    4    5    6    ;    '    ret
+  lsft z    x    c    v    b    n    1    2    3    /    rsft
+  lctl lmet lalt           spc            ralt rmet cmp  rctl
+)
+
+
 (defalias
   num  (layer-toggle numbers) ;; Bind num to a button that switches to a layer
   qw (layer-switch qwerty)
   qwr (layer-switch qwerty-ru)
+  kil  C-A-del                ;; Bind kil to a button that Ctrl-Alt-deletes
 )
 
-#| --------------------------------------------------------------------------
-                        Optional : `defalias` statements
-
-  KMonad will let you specify some very specific, crazy buttons. These
-  definitions can get pretty long, though, and would make `deflayer` blocks
-  nearly impossible to read. Therefore we provide the ability to alias names to
-  these buttons, to keep the actual `deflayer` statements orderly.
-
-  A `defalias` can contain any number of aliases, and it can refer backwards or
-  forwards to layers without issue. The only sequencing that needs to be kept in
-  mind is that a `defalias` cannot refer forward to another `defalias` that is
-  not yet defined.
-
-  Here we define a few aliases, but we will define more later. Notice that we
-  try to only use 3 letter names for aliases. If that is not enough to be clear,
-  consider widening all columns to 6 or 7 characters (or be content with a messy
-  config).
-
-  -------------------------------------------------------------------------- |#
-
- (defalias
-  num  (layer-toggle numbers) ;; Bind num to a button that switches to a layer
-  kil  C-A-del                ;; Bind kil to a button that Ctrl-Alt-deletes
- )
-
-
-#| NOTE: The above code could just as easily have been written as:
-(defalias num (layer-toggle numbers))
-(defalias kil C-A-del)
-|#
-
-
-#| --------------------------------------------------------------------------
-                     Necessary: at least 1 `deflayer` block
-
-  As explained in the `defsrc` section, a `deflayer` will define a button for
-  each corresponding entry in the `defsrc` definition. A `deflayer` statement
-  consists of the `deflayer` keyword, followed by the name used to identify this
-  layer, followed by N 'statements-that-evaluate-to-a-button', where N is
-  exactly how many entries are defined in the `defsrc` statement.
-
-  It is also important to mention that the 'keymap' in KMonad is modelled as a
-  stack of layers (just like in QMK). When an event is registered we look in the
-  top-most layer for a handler. If we don't find one we try the next layer, and
-  then the next.
-
-  Exactly what 'evaluates-to-a-button' will be expanded on in more detail below.
-  There are very many different specialist buttons in KMonad that we will touch
-  upon. However, for now, these 4 are a good place to begin:
-
-  1. Any keycode evaluates to a button that, on press, emits the press of that
-     keycode, and on release, emits the release of that keycode. Just a 'normal'
-     button. The exception is '\', which gets used as an escape character. Use
-     '\\' instead. Other characters that need to be escaped to match the literal
-     character are '(', ')', and '_'.
-
-  2. An @-prefixed name evaluates to an alias lookup. We named two buttons in
-     the `defalias` block above, we could now refer to these buttons using
-     `@num` and `@kil`. This is also why we only use alias-names no longer than
-     3 characters in this tutorial. Also, note that we are already referencing
-     some aliases that have not yet been defined, this is not an issue.
-
-  3. The '_' character evaluates to transparent. I.e. no handler for that
-     key-event in this layer, causing this event to be handed down the layer
-     stack to perhaps be handled by the next layer.
-
-  4. The 'XX' character evaluates to blocked. I.e. no action bound to that
-     key-event in this layer, but do actually catch event, preventing any
-     underlying layer from handling it.
-
-  Finally, it is important to note that the *first* `deflayer` statement in a
-  KMonad config will be the layer that is active when KMonad starts up.
-
-  -------------------------------------------------------------------------- |#
-
-
-#| --------------------------------------------------------------------------
-                     Optional: as many layers as you please
-
-  We had already defined `num` as referring to a `(layer-toggle numbers)`. We
-  will get into layer-manipulation soon, but first, let's just create a second
-  layer that overlays a numpad under our right-hand.
-
-  To easily specify layers it is highly recommended to create an empty
-  `deflayer` statement as a comment at the top of your config, so you can simply
-  copy-paste this template. There are also various empty layer templates
-  available in the './keymap/template' directory.
-
-  -------------------------------------------------------------------------- |#
-
-(deflayer numbers
+(deflayer name 
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    XX   /    7    8    9    -    _    _    _
-  _    _    _    _    _    XX   *    4    5    6    +    _    _
-  _    _    \(   \)   .    XX   0    1    2    3    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _    _
 )
 
