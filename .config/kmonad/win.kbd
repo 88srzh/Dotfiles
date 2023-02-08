@@ -1,0 +1,101 @@
+
+(defcfg
+  ;; For Linux
+  ;; input  (device-file "/dev/input/by-id/usb-04d9_daskeyboard-event-kbd")
+  ;; output (uinput-sink "My KMonad output"
+    ;; To understand the importance of the following line, see the section on
+    ;; Compose-key sequences at the near-bottom of this file.
+    ;; "/run/current-system/sw/bin/sleep 1 && /run/current-system/sw/bin/setxkbmap -option compose:ralt")
+  ;; cmp-seq ralt    ;; Set the compose key to `RightAlt'
+  ;; cmp-seq-delay 5 ;; 5ms delay between each compose-key sequence press
+
+  ;; For Windows
+  input  (low-level-hook)
+  output (send-event-sink)
+
+  ;; For MacOS
+  ;; input  (iokit-name "my-keyboard-product-string")
+  ;; output (kext)
+
+  fallthrough true
+
+  ;; allow-cmd false
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet cmp  rctl
+)
+
+(deflayer qwerty 
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  @num  q    3    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet cmp  rctl
+)
+
+(deflayer numbers
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    7    8    9    _    _    _    _
+  _    _    _    _    _    _    _    4    5    6    _    _    _
+  _    _    _    _    _    _    _    1    2    3    _    _
+  _    _    _              _         _    _    _    _
+)
+
+
+(defalias
+  num  (layer-toggle numbers) ;; Bind num to a button that switches to a layer
+  qw (layer-switch qwerty)
+ ;; qwr (layer-switch qwerty-ru)
+  kil  C-A-del                ;; Bind kil to a button that Ctrl-Alt-deletes
+  cpy C-c
+  pst C-v
+  cut C-x
+)
+
+(deflayer name 
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _    _
+)
+
+(defalias
+
+  qwe (layer-switch qwerty) ;; Set qwerty as the base layer
+  col (layer-switch colemak) ;; Set colemak as the base layer
+)
+(deflayer layer-test
+  @qwe _    _    _    _    _    _    _    _    _    _    _    _    _
+  @col _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _    _
+)
+
+;; Exactly like qwerty, but with the letters switched around
+(deflayer colemak
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    f    p    g    j    l    u    y    ;    [    ]    \
+  caps a    r    s    t    d    h    n    e    i    o    '    ret
+  lsft z    x    c    v    b    k    m    ,    .    /    rsft
+  lctl (layer-toggle numbers) lalt           spc            ralt rmet @sym _
+)
+
+(defalias
+  sym (layer-toggle symbols)
+
+)
+
+(deflayer symbols
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    ä    é    ©    _    _    _    _    _    _    _    _    _    _
+  _    +'   +~   +`   +^   _    _    _    _    _    _    _    _
+  _    +"   +,   _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _    _
+)
