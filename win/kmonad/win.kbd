@@ -19,21 +19,35 @@
 (defalias
   num  (layer-toggle numbers) ;; Bind num to a button that switches to a layer
   qw (layer-switch qwerty)
- ;; qwr (layer-switch qwerty-ru)
-  qwe (layer-switch qwerty) ;; Set qwerty as the base layer
+  qwr (layer-switch qwerty-ru)
   sym (layer-toggle symbols)
- ;; qwr (layer-switch qwerty-ru)
+  xru (cmd-button "DISPLAY=:1.0 setxkbmap ru")
+  xqw (cmd-button "DISPLAY=:1.0 setxkbmap us")
   kil  C-A-del                ;; Bind kil to a button that Ctrl-Alt-deletes
+  ctg A-lsft
+
   cpy C-c
   pst C-v
   cut C-x
+
+  ron (around @qwr @xru)
+
+  qcr (tap-hold-next-release 100 @con @ron )
 )
 
 (deflayer qwerty 
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    3    e    r    t    y    u    i    o    p    [    ]    \
+  @sym  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  @cup  q   w    e    r    t    y    u    i    o    p    [    ]    \
   @num a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  @qcr z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet cmp  rctl
+)
+
+(deflayer qwerty-ru 
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  @rup a    s    d    f    g    h    j    k    l    ;    '    ret
+  @rcq z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lmet lalt           spc            ralt rmet cmp  rctl
 )
 
@@ -63,7 +77,7 @@
 
 (deflayer symbols
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    ä    é    ©    _    _    _    _    _    _    _    _    _    _
+  _    +!   +@    ©    _    _    _    _    _    _    _    _    _    _
   _    +'   +~   +`   +^   _    _    _    _    _    _    _    _
   _    +"   +,   _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _    _
