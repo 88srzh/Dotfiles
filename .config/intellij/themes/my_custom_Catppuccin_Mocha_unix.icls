@@ -1,9 +1,9 @@
 <scheme name="Catppuccin Mocha" version="142" parent_scheme="Darcula">
   <metaInfo>
-    <property name="created">2023-02-20T21:52:24</property>
+    <property name="created">2023-02-20T22:12:54</property>
     <property name="ide">Idea</property>
     <property name="ideVersion">2022.3.1.0.0</property>
-    <property name="modified">2023-02-20T21:52:42</property>
+    <property name="modified">2023-02-20T22:13:16</property>
     <property name="originalScheme">_@user_Catppuccin Mocha</property>
   </metaInfo>
   <colors>
@@ -83,7 +83,6 @@
     <option name="ABSTRACT_METHOD_ATTRIBUTES">
       <value>
         <option name="FOREGROUND" value="89b4fa" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="ANGLE_BRACKETS_RAINBOW_COLOR0">
@@ -562,7 +561,6 @@
     <option name="DART_CONSTRUCTOR">
       <value>
         <option name="FOREGROUND" value="eba0ac" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="DART_ENUM_CONSTANT">
@@ -615,19 +613,16 @@
     <option name="DEBUGGER_INLINED_VALUES">
       <value>
         <option name="FOREGROUND" value="585b70" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="DEBUGGER_INLINED_VALUES_EXECUTION_LINE">
       <value>
         <option name="FOREGROUND" value="585b70" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="DEBUGGER_INLINED_VALUES_MODIFIED">
       <value>
         <option name="FOREGROUND" value="fab387" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="DEBUGGER_SMART_STEP_INTO_SELECTION" baseAttributes="LIVE_TEMPLATE_ATTRIBUTES" />
@@ -1512,13 +1507,11 @@
     <option name="MARKDOWN_CODE_FENCE">
       <value>
         <option name="FOREGROUND" value="cdd6f4" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="MARKDOWN_CODE_SPAN">
       <value>
         <option name="FOREGROUND" value="a6e3a1" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="MARKDOWN_CODE_SPAN_MARKER">
@@ -1582,19 +1575,16 @@
     <option name="MARKDOWN_LINK_DESTINATION">
       <value>
         <option name="FOREGROUND" value="f5e0dc" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="MARKDOWN_LINK_LABEL">
       <value>
         <option name="FOREGROUND" value="b4befe" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="MARKDOWN_LINK_TEXT">
       <value>
         <option name="FOREGROUND" value="b4befe" />
-        <option name="FONT_TYPE" value="2" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
@@ -2546,7 +2536,6 @@
     <option name="XPATH.KEYWORD">
       <value>
         <option name="FOREGROUND" value="cba6f7" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="XPATH.XPATH_NAME">
