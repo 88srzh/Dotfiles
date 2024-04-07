@@ -62,6 +62,7 @@ window#waybar.hidden {
 #pulseaudio,
 #network,
 #clock,
+#keyboard-state,
 #tray {
   border-radius: 4px;
   margin: 6px 3px;
@@ -85,6 +86,10 @@ window#waybar.hidden {
 
 #cpu {
 	background-color: @mauve;
+}
+
+#keyboard-state {
+  background-color: @sky;
 }
 
 #memory {

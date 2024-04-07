@@ -12,13 +12,15 @@
     ],
     "modules-right": [
         "tray",
+	"keyboard-state",
 	"cpu",
         "memory",
 	"disk",
-	"temperatue",
+	"temperature",
         "network",
         "pulseaudio",
-        "custom/power"
+        "custom/power",
+	"custom/vpn"
     ],
     "wlr/taskbar": {
         "format": "{icon}",
@@ -46,13 +48,20 @@
             "active": "󱓻",
             "urgent": "󱓻"
         },
-        "persistent_workspaces": {
+       "persistent_workspaces": {
             "1": [],
             "2": [],
             "3": [],
             "4": [],
             "5": []
         }
+    },
+    "custom/vpn": {
+    "format": "VPN ",
+    "exec": "echo '{\"class\": \"connected\"}'",
+    "exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
+    "return-type": "json",
+    "interval": 5
     },
     "cpu": {
 	"interval": 5,
@@ -68,7 +77,16 @@
     	"format": "󰨣 {}%",
     	"max-length": 10
     },
+    "keyboard-state": {
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+	"locked": "",
+	"unlocked": ""
+     }
+    },
     "temperatue": {
+    "hwmon-path": "sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 80,
     "interval": 4,
     "format": "{temperatureC}󰔄 {icon}",
@@ -84,11 +102,11 @@
         "format": "  {:%I:%M %p}"
     },
     "network": {
-        "format-wifi" : "{icon}",
+        "format-wifi" : "{essid} {icon}",
         "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
-        "format-ethernet": "󰀂",
-	"format-alt" : "󱛇",
-        "format-disconnected" : "󰖪",
+        "format-ethernet": "{ipaddr}/{cidr} 󰀂",
+	"format-alt" : "{ifname}: {ipaddr}/{cidr} 󱛇",
+        "format-disconnected" : "Disconnected 󰖪",
 	"tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
 	"tooltip-format-disconnected": "Disconnected",
@@ -111,13 +129,13 @@
         "scroll-step": 1
     },
     "custom/logo": {
-        "format": "  ",
+        "format": "",
         "tooltip": false,
         "on-click": "~/.config/rofi/launchers/misc/launcher.sh &"
     },
     "custom/power": {
         "format": "󰤆",
         "tooltip": false,
-        "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh &"
+        "on-click": "wlogout"
     }
 }
