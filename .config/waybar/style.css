@@ -69,6 +69,7 @@ window#waybar.hidden {
   padding: 6px 12px;
   background-color: #1e1e2e;
   color: #181825;
+  background-color: @blue
 }
 
 #custom-power {
@@ -85,7 +86,7 @@ window#waybar.hidden {
 }
 
 #cpu {
-	background-color: @mauve;
+  background-color: @mauve;
 }
 
 #keyboard-state {
@@ -102,10 +103,10 @@ window#waybar.hidden {
   background-color: #f38ba8;
 }
 #temperature {
-	background-color: @pink;
+  background-color: @pink;
 }
 #temperature.critical {
-	background-color: @red;
+  background-color: @red;
 }
 @keyframes blink {
   to {
