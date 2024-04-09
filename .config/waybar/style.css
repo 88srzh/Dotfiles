@@ -29,7 +29,8 @@ window#waybar.hidden {
   padding: 6px 18px;
   margin: 6px 3px;
   border-radius: 4px;
-  background-color: #1e1e2e;
+  /* background-color: #1e1e2e; */
+  background-color: @sky;
   /* color: #cdd6f4; */
   color: @text;
 }
@@ -43,7 +44,8 @@ window#waybar.hidden {
 #workspaces button:hover {
  box-shadow: inherit;
  text-shadow: inherit;
- color: #1e1e2e;
+ /* color: #1e1e2e; */
+ color: @sky;
  background-color: #cdd6f4;
 }
 
@@ -51,6 +53,8 @@ window#waybar.hidden {
   background-color: #f38ba8;
 }
 
+#custom-weather,
+#custom-updates,
 #memory,
 #disk,
 #workspaces,
@@ -60,6 +64,7 @@ window#waybar.hidden {
 #battery,
 #backlight,
 #pulseaudio,
+#pulseaudio.microphone,
 #network,
 #clock,
 #keyboard-state,
@@ -83,6 +88,20 @@ window#waybar.hidden {
   font-size: 15px;
   border-radius: 8px 0px 0px 8px;
   color: #1793d1;
+}
+
+#custom-updates {
+  padding-right: 7px;
+  padding-left: 7px;
+  margin-left: 5px;
+  font-size: 15px;
+  border-radius: 8px 0px 0px 8px;
+  color: #1793d1;
+  background-color: transparent;
+}
+
+#custom-weather {
+  background-color: @mauve;
 }
 
 #cpu {
@@ -125,6 +144,10 @@ window#waybar.hidden {
 
 #pulseaudio {
   background-color: #f9e2af;
+}
+
+#pulseaudio.microphone {
+background-color: @rosewater;
 }
 
 #network {

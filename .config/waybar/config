@@ -5,13 +5,15 @@
     "height": 34,
     "modules-left": [
         "custom/logo",
-        "hyprland/workspaces"
+	"custom/updates",
+        "hyprland/workspaces",
     ],
     "modules-center": [
         "clock"
     ],
     "modules-right": [
         "tray",
+	"custom-weather",
 	"keyboard-state",
 	"cpu",
         "memory",
@@ -19,9 +21,17 @@
 	"temperature",
         "network",
         "pulseaudio",
+	"pulseaudio#microphone",
         "custom/power",
-	"custom/vpn"
+	"custom/vpn",
     ],
+    "custom-weather" : {
+        "tooltip": true,
+        "format": "{}",
+        "interval" : 30,
+        "exec": "~/.config/waybar/scripts/waybar-wttr.py",
+        "return-type": "json"
+    },
     "wlr/taskbar": {
         "format": "{icon}",
         "on-click": "activate",
@@ -33,6 +43,7 @@
     "hyprland/workspaces": {
     	"all-outputs": true,
         "on-click": "activate",
+	"show-special": true,
         "format": "{icon}",
         "format-icons": {
             "default": "",
@@ -54,7 +65,8 @@
             "3": [],
             "4": [],
             "5": []
-        }
+        },
+	"sort-by-number": true,
     },
     "custom/vpn": {
     "format": "VPN ",
@@ -62,6 +74,14 @@
     "exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
     "return-type": "json",
     "interval": 5
+    },
+        "custom/updates": {
+        "format": "󰚰 {}",
+        "interval": 300,                     // every 5 min
+        "exec": "i=$(checkupdates); echo \"$i\" |wc -l; echo \"$i\" |column -t |tr '\n' '\r'",       // # of updates and tooltip details
+        "exec-if": "exit 0",                  // always run; consider advanced run conditions
+        "on-click": "kitty -e sudo apt upgrade", // update system
+        "signal": 8
     },
     "cpu": {
 	"interval": 5,
@@ -128,10 +148,19 @@
         "on-click": "pamixer -t",
         "scroll-step": 1
     },
+        "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": " {volume}%",
+        "tooltip": false,
+        "format-source-muted": " Muted",
+        "on-click": "pamixer --default-source -t",
+        "on-scroll-up": "pamixer --default-source -i 2",
+        "on-scroll-down": "pamixer --default-source -d 2",
+        "scroll-step": 5
+    },
     "custom/logo": {
         "format": "",
         "tooltip": false,
-        "on-click": "~/.config/rofi/launchers/misc/launcher.sh &"
     },
     "custom/power": {
         "format": "󰤆",
