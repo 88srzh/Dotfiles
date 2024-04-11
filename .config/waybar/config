@@ -13,7 +13,7 @@
     ],
     "modules-right": [
         "tray",
-	"custom-weather",
+	"custom/weather",
 	"keyboard-state",
 	"cpu",
         "memory",
@@ -25,11 +25,11 @@
         "custom/power",
 	"custom/vpn",
     ],
-    "custom-weather" : {
+    "custom/weather" : {
         "tooltip": true,
         "format": "{}",
-        "interval" : 30,
-        "exec": "~/.config/waybar/scripts/waybar-wttr.py",
+        "interval" : 3600,
+        "exec": "python3 ~/.config/waybar/scripts/waybar-wttr.py",
         "return-type": "json"
     },
     "wlr/taskbar": {
@@ -42,6 +42,8 @@
     },
     "hyprland/workspaces": {
     	"all-outputs": true,
+	"active-only": false,
+	"disable-scroll": false,
         "on-click": "activate",
 	"show-special": true,
         "format": "{icon}",
