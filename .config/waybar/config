@@ -15,13 +15,9 @@
         "tray",
 	"custom/weather",
 	"keyboard-state",
-	"cpu",
-        "memory",
 	"disk",
 	"temperature",
         "network",
-        "pulseaudio",
-	"pulseaudio#microphone",
         "custom/power",
 	"custom/vpn",
     ],
@@ -138,30 +134,7 @@
 	"interval": 5,
 	"nospacing": 1,
     },
-    "pulseaudio": {
-        "format": "{icon}",
-        "format-bluetooth": "󰂰",
-        "nospacing": 1,
-        "tooltip-format": "Volume : {volume}%",
-        "format-muted": "󰝟",
-        "format-icons": {
-            "headphone": "",
-            "default": ["󰖀","󰕾",""]
-        },
-        "on-click": "pamixer -t",
-        "scroll-step": 1
-    },
-        "pulseaudio#microphone": {
-        "format": "{format_source}",
-        "format-source": " {volume}%",
-        "tooltip": false,
-        "format-source-muted": " Muted",
-        "on-click": "pamixer --default-source -t",
-        "on-scroll-up": "pamixer --default-source -i 2",
-        "on-scroll-down": "pamixer --default-source -d 2",
-        "scroll-step": 5
-    },
-    "custom/logo": {
+        "custom/logo": {
         "format": "",
         "tooltip": false,
     },
