@@ -61,10 +61,7 @@ window#waybar.hidden {
 #cpu,
 #temperature,
 #custom-power,
-#battery,
 #backlight,
-#pulseaudio,
-#pulseaudio.microphone,
 #network,
 #clock,
 #keyboard-state,
@@ -73,7 +70,7 @@ window#waybar.hidden {
   border-radius: 4px;
   margin: 6px 3px;
   padding: 6px 12px;
-  background-color: @peach;
+  background-color: @lavender;
   color: #181825;
 }
 
@@ -101,7 +98,7 @@ window#waybar.hidden {
 }
 
 #custom-weather {
-  background-color: @mauve;
+  background-color: @peach;
 }
 
 #cpu {
@@ -109,7 +106,7 @@ window#waybar.hidden {
 }
 
 #keyboard-state {
-  background-color: @sky;
+  background-color: @maroon;
 }
 
 #file-manager {
@@ -117,13 +114,10 @@ window#waybar.hidden {
 }
 
 #memory {
-  background-color: #fab387;
+  background-color: @mauve;
 }
 #disk {
-	background-color: @maroon;
-}
-#battery {
-  background-color: #f38ba8;
+	background-color: @mauve;
 }
 #temperature {
   background-color: @pink;
@@ -151,7 +145,7 @@ background-color: @rosewater;
 }
 
 #network {
-  background-color: #94e2d5;
+  background-color: @flamingo;
   padding-right: 17px;
 }
 
@@ -161,7 +155,7 @@ background-color: @rosewater;
 }
 
 #custom-power {
-  background-color: #f2cdcd;
+  background-color: @rosewater;
 }
 
 
