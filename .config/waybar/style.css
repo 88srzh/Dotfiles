@@ -58,6 +58,7 @@ window#waybar.hidden {
 #custom-vpn,
 #memory,
 #disk,
+#language,
 #workspaces,
 #cpu,
 #temperature,
@@ -77,6 +78,10 @@ window#waybar.hidden {
 
 #custom-power {
   margin-right: 6px;
+}
+
+#language {
+	background-color: @green;
 }
 
 #custom-logo {
@@ -121,6 +126,7 @@ window#waybar.hidden {
 #memory {
   background-color: @mauve;
 }
+
 #disk {
 	background-color: @mauve;
 }

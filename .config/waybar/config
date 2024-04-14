@@ -13,13 +13,14 @@
     ],
     "modules-right": [
         "tray",
+	"hyprland/language",
 	"custom/weather",
 	"custom/vpn",
 	"keyboard-state",
 	"disk",
 	"temperature",
         "network",
-        "custom/power",
+        "custom/power"
     ],
     "custom/weather" : {
         "tooltip": true,
@@ -27,6 +28,12 @@
         "interval" : 3600,
         "exec": "python3 ~/.config/waybar/scripts/waybar-wttr.py",
         "return-type": "json"
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-ru": "Rus",
+        "format-us": "Eng",
+        "format-en": "Eng",
     },
     "wlr/taskbar": {
         "format": "{icon}",
@@ -127,7 +134,7 @@
     "network": {
         "format-wifi" : "{essid} {icon}",
         "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
-        "format-ethernet": "{ipaddr}/{cidr} 󰀂",
+        "format-ethernet": "{ipaddr} 󰀂",
 	"format-alt" : "{ifname}: {ipaddr}/{cidr} 󱛇",
         "format-disconnected" : "Disconnected 󰖪",
 	"tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
