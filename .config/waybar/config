@@ -14,12 +14,12 @@
     "modules-right": [
         "tray",
 	"custom/weather",
+	"custom/vpn",
 	"keyboard-state",
 	"disk",
 	"temperature",
         "network",
         "custom/power",
-	"custom/vpn",
     ],
     "custom/weather" : {
         "tooltip": true,
@@ -67,9 +67,13 @@
 	"sort-by-number": true,
     },
     "custom/vpn": {
-    "format": "VPN ",
+    "format": "VPN {icon}",
+    	"format-icons": {
+	"active": "",
+	"default": ""
+	},
     "exec": "echo '{\"class\": \"connected\"}'",
-    "exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
+    "exec-if": "test -d /proc/sys/net/ipv4/conf/client",
     "return-type": "json",
     "interval": 5
     },
