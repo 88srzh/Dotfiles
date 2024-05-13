@@ -6,6 +6,7 @@
     "modules-left": [
         "custom/logo",
 	"custom/updates",
+	"custom/media",
         "hyprland/workspaces"
     ],
     "modules-center": [
@@ -13,13 +14,10 @@
     ],
     "modules-right": [
         "tray",
-	"hyprland/language",
 	"custom/weather",
 	"custom/vpn",
-	"keyboard-state",
 	"disk",
 	"temperature",
-        "network",
         "custom/power"
     ],
     "custom/weather" : {
@@ -56,7 +54,7 @@
     },
         "custom/updates": {
         "format": "󰚰 {}",
-        "interval": 300,                     // every 5 min
+        "interval": 300,
         "exec": "apt list --upgradable | wc -l",       // # of updates and tooltip details
         "exec-if": "exit 0",                  // always run; consider advanced run conditions
         "on-click": "kitty -e sudo apt upgrade", // update system
@@ -66,14 +64,6 @@
     	"interval": 4,
     	"format": "󰨣 {}%",
     	"max-length": 10
-    },
-    "keyboard-state": {
-    "capslock": true,
-    "format": "{name} {icon}",
-    "format-icons": {
-	"locked": "",
-	"unlocked": ""
-     }
     },
     "temperature": {
     "thermal-zone": 2,
@@ -85,6 +75,9 @@
     "max-length": 10
     },
     "tray": {
+    	"icons": {
+	"telegram": "~/.config/waybar/icons/telegram.png",
+	},
         "spacing": 10
     },
     "clock": {
@@ -92,18 +85,20 @@
         "format-alt": "  {:%a, %d %b %Y}",
         "format": "  {:%I:%M %p}"
     },
-    "network": {
-        "format-ethernet": "󰀂",
-	"format-alt" : "{ifname}: {ipaddr}/{cidr} 󱛇",
-        "format-disconnected" : "Disconnected 󰖪",
-        "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-	"tooltip-format-disconnected": "Disconnected",
-	"interval": 5,
-	"nospacing": 1,
-    },
         "custom/logo": {
         "format": "",
         "tooltip": false,
+    },
+        "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "󰗃"
+        },
+        "escape": true,
+        "exec": "python3 ~/.config/waybar/scripts/mediaplayer.py 2> /dev/null" // Script in resources folder
     },
     "custom/power": {
         "format": "󰤆",

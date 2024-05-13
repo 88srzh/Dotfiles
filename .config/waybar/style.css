@@ -5,81 +5,72 @@
   border-radius: 0;
   min-height: 0;
   font-family: Material Design Icons, JetBrainsMono Nerd Font;
-  font-size: 14px;
+  font-size: 16px;
+  color: #66ACED;
 }
 
 window#waybar {
-  background-color: @base;
-  transition-property: background-color;
+  background-color: rgba(0,0,0,0);
   transition-duration: 0.5s;
+  font-size: 14px;
 }
 
 window#waybar.hidden {
   opacity: 0.5;
 }
 
+#window {
+    font-weight: bold;
+    color: #f7768e;
+}
+
 #workspaces {
+  font-size: 16px;
   background-color: transparent;
+  border-radius: 20px;
 }
 
 #workspaces button {
-  all: initial; /* Remove GTK theme values (waybar #1351) */
-  min-width: 0; /* Fix weird spacing in materia (waybar #450) */
-  box-shadow: inset 0 -3px transparent; /* Use box-shadow instead of border so the text isn't offset */
-/*  padding: 6px 18px;
-  margin: 6px 3px;
-  border-radius: 4px; */
-  /* background-color: #1e1e2e; */
-  background-color: @sky;
-  /* color: #cdd6f4; */
-  color: @text;
+  color: #dfdfdf;
+  border-bottom: 1px solid #ff4499;
 }
 
 #workspaces button.active {
-  /* color: #1e1e2e; */
-  color: @text;
-  background-color: #cdd6f4;
+  border-bottom: 1px solid #ff4499;
 }
 
 #workspaces button:hover {
  box-shadow: inherit;
  text-shadow: inherit;
- /* color: #1e1e2e; */
  color: @sky;
- background-color: #cdd6f4;
 }
 
 #workspaces button.urgent {
-  background-color: #f38ba8;
+  color: #c9545d;
+  border-color: #c9545d;
 }
 
 #custom-weather,
 #custom-updates,
 #custom-vpn,
 #disk,
-#language,
 #workspaces,
 #temperature,
 #custom-power,
 #backlight,
-#network,
 #clock,
-#keyboard-state,
 #tray {
-  border-radius: 4px;
   margin: 6px 3px;
-  padding: 6px 12px;
-  background-color: @lavender;
+  padding: 4px 8px;
   color: #181825;
 }
 
 #custom-power {
-  margin-right: 6px;
+  font-size:18px;
+  padding-right: 1rem;
+  color: @lavender;
 }
 
-#language {
-	background-color: @yellow;
-}
 
 #custom-logo {
   padding-right: 7px;
@@ -87,7 +78,7 @@ window#waybar.hidden {
   margin-left: 5px;
   font-size: 15px;
   border-radius: 8px 0px 0px 8px;
-  color: #1793d1;
+  color: @sky;
 }
 
 #custom-updates {
@@ -95,57 +86,60 @@ window#waybar.hidden {
   padding-left: 7px;
   margin-left: 5px;
   font-size: 15px;
+  color: @sky;
   border-radius: 8px 0px 0px 8px;
-  color: #1793d1;
   background-color: transparent;
 }
 
 #custom-weather {
-  background-color: @green;
+  color: @green;
 }
 
-#vpn {
-  background-color: @lavender
-}
-
-#keyboard-state {
-  background-color: @maroon;
+#custom-vpn {
+  color: @teal;
 }
 
 #disk {
-	background-color: @mauve;
+  color: @mauve;
 }
 
 #temperature {
-  background-color: @pink;
+  color: @red;
 }
 #temperature.critical {
-  background-color: @red;
+  color: @red;
 }
 
-@keyframes blink {
-  to {
-    background-color: #f38ba8;
-    color: #181825;
-  }
+@keyframes blink-warning {
+    70% {
+        color: white;
+    }
+
+    to {
+        color: white;
+        background-color: orange;
+    }
+}
+
+@keyframes blink-critical {
+    70% {
+      color: white;
+    }
+
+    to {
+        color: white;
+        background-color: red;
+    }
 }
 
 #backlight {
-  background-color: #fab387;
+  color: #fab387;
 }
 
-#network {
-  background-color: @flamingo;
-  padding-right: 17px;
-}
 
 #clock {
   font-family: JetBrainsMono Nerd Font;
-  background-color: #cba6f7;
-}
-
-#custom-power {
-  background-color: @rosewater;
+  color: #cba6f7;
 }
 
 
