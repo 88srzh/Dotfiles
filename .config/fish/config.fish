@@ -2,6 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     alias wg-up="sudo wg-quick up client"
     alias wg-down="sudo wg-quick down client"
+    alias neo="neovide.AppImage"
 
     # Weather
     alias weather="curl wttr.in/Izhevsk"
@@ -16,3 +17,5 @@ end
     alias wo="pomodoro work 45"
     alias br="pomodoro break 10"
 end
+
+starship init fish | source
