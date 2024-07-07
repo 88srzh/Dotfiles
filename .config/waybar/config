@@ -1,142 +1,243 @@
+// Global 
 {
     "layer": "top",
     "position": "top",
-    "spacing": 0,
-    "height": 45,
+    "margin": 5,
+
+    // If height property would be not present, it'd be calculated dynamically
+    "height": 30,
+
     "modules-left": [
-        "custom/logo",
-	"custom/updates",
-	"custom/media",
-	"hyprland/window",
-        "hyprland/workspaces"
+        // "custom/launcher",
+        "hyprland/workspaces",
+        "custom/media",
+        "hyprland/window",
     ],
+ 
     "modules-center": [
-        "clock"
+        "clock",
     ],
+
     "modules-right": [
         "tray",
-	"custom/weather",
-	"custom/vpn",
-	"disk",
-	"temperature",
-        "custom/power"
+        // "idle_inhibitor",
+        // "memory",
+        // "cpu",
+        "custom/keyboard-layout",
+        //"custom/PBPbattery",
+        // "backlight#icon",
+        // "backlight#value",
+        "pulseaudio",
+    "pulseaudio#microphone",
+        "network",
+        "battery",
     ],
-    "custom/weather" : {
-        "tooltip": true,
+
+    // Modules
+
+    "idle_inhibitor": {
+        "format": "{icon} ",
+        "format-icons":{
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon} ",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "{capacity}% ",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "custom/PBPbattery": {
+        "exec": "~/.config/waybar/scripts/PBPbattery.sh",
         "format": "{}",
-        "interval" : 3600,
-        "exec": "python3 ~/.config/waybar/scripts/waybar-wttr.py",
-        "return-type": "json"
     },
-    "hyprland/language": {
+
+    "clock": {
+        "interval": 10,
+        // "format-alt": " {:%e %b %Y}", // Icon: calendar-alt
+        "format": "{:%e %b %Y %H:%M} ",
+        "tooltip-format": "{:%e %B %Y}"
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": "  {usage}% ({load})", // Icon: microchip
+        "states": {
+            "warning": 70,
+            "critical": 90,
+        },
+        "on-click": "kitty -e 'btm'",
+    },
+
+    "custom/keyboard-layout": {
+        "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
+        // Interval set only as a fallback, as the value is updated by signal
+        "interval": 30,
+        "format": "  {}", // Icon: keyboard
+        // Signal sent by Sway key binding (~/.config/sway/key-bindings)
+        "signal": 1, // SIGHUP
+        "tooltip": false,
+        "on-click": "~/.config/waybar/scripts/keyhint.sh",
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "  {}%", // Icon: memory
+        "on-click": "kitty -e 'btm'", 
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "network": {
+        "interval": 5,
+        "format-wifi": " ", // Icon: wifi
+        "format-ethernet": " ", // Icon: ethernet
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}",
+        "on-click": "kitty -e 'nmtui'",
+    },
+    "network#vpn": {
+        "interface": "tun0",
+        "format": " ",
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+    },
+
+    "hyprland/mode": {
         "format": "{}",
-        "format-ru": "Rus",
-        "format-us": "Eng",
-        "format-en": "Eng",
+        "tooltip": false
     },
-    "hyprland/taskbar": {
-        "format": "{icon}",
-        "on-click": "activate",
-        "on-click-right": "fullscreen",
-        "icon-theme": "WhiteSur",
-        "icon-size": 25,
-        "tooltip-format": "{title}"
-    },
-       "custom/vpn": {
- 	"format": "VPN {icon}",
-    	"format-icons": {
-	"active": "",
-	"default": ""
-	},
-    "exec": "echo '{\"class\": \"connected\"}'",
-    "exec-if": "test -d /proc/sys/net/ipv4/conf/client",
-    "return-type": "json",
-    "interval": 5
-    },
-        "custom/updates": {
-        "format": "󰚰 {}",
-        "interval": 300,
-        "exec": "apt list --upgradable | wc -l",       // # of updates and tooltip details
-        "exec-if": "exit 0",                  // always run; consider advanced run conditions
-        "on-click": "kitty -e sudo apt upgrade", // update system
-        "signal": 8
-    },
-    "disk": {
-    	"interval": 4,
-    	"format": "󰨣 {}%",
-    	"max-length": 10
-    },
+
     "hyprland/window": {
         "format": "{}",
         "max-length": 120
     },
-    "temperature": {
-    "thermal-zone": 2,
-    "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
-    "critical-threshold": 80,
-    "interval": 4,
-    "format": "{temperatureC}󰔄 {icon}",
-    "format-icons": ["","",""],
-    "max-length": 10
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "disable-markup" : false,
+        "all-outputs": true,
+        "format": "  {icon}  ",
+        //"format":"{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "󰙯",
+            "4": "",
+            "5": "󰡨",
+            "6": "",
+        }
     },
+
+    "pulseaudio": {
+        "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": " {icon}  {format_source}",
+        "format-muted": "󰸈",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "וֹ",
+            "headset": "  ",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [""]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " ",
+        "on-click": "pamixer --default-source -t",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "pamixer --default-source -i 5",
+        "on-scroll-down": "pamixer --default-source -d 5",
+        "scroll-step": 5
+    },
+
+    // to use the weather module replace <your_location> with your city or town
+    // note: do not use spaces: new york would be newyork
+    "custom/weather": {
+        "exec": "~/.config/waybar/scripts/weather.sh tampa", 
+        "return-type": "json",
+        "interval": 600,
+    },
+
     "tray": {
-    	"icons": {
-	"telegram": "~/.config/waybar/icons/telegram.png",
-	},
-        "spacing": 10
+        "icon-size": 18,
+        "spacing":10,
+     },
+
+    "backlight#icon": {
+        "format": "{icon}",
+        "format-icons": [""],
+        "on-scroll-down": "brightnessctl -c backlight set 1%-",
+        "on-scroll-up": "brightnessctl -c backlight set +1%"
     },
-    "clock": {
-        "tooltip-format": "<tt>{calendar}</tt>",
-        "format-alt": "  {:%a, %d %b %Y}",
-        "format": "  {:%I:%M %p}"
+
+    "backlight#value" :{
+         "format": "{percent}%",
+         "on-scroll-down": "brightnessctl -c backlight set 1%-",
+         "on-scroll-up": "brightnessctl -c backlight set +1%"
     },
-        "custom/logo": {
-        "format": "",
+
+    "custom/firefox": {
+        "format": " ",
+        "on-click": "exec firefox",
+        "tooltip": false
+    },
+
+    "custom/terminal": {
+        "format": " ",
+        "on-click": "exec kitty",
+        "tooltip": false
+    },
+
+    "custom/files": {
+        "format": " ",
+        "on-click": "exec nautilus",
+        "tooltip": false
+    },
+
+    "custom/launcher": {
+        "format":" ",
+        "on-click": "exec wofi -c ~/.config/wofi/config -I",
         "tooltip": false,
     },
-        "custom/media": {
+
+    "custom/power": {
+        "format":"⏻",
+        "on-click": "exec ~/.config/waybar/scripts/power-menu.sh",
+        "tooltip": false,
+    },
+
+    "custom/media": {
         "format": "{icon} {}",
+        "return-type": "json",
         "max-length": 40,
-	"interval": 10,
         "format-icons": {
-            "spotify": "",
-            "default": "󰗃"
+            "spotify": " ",
+            "default": "󰗃 "
         },
         "escape": true,
-        "exec": "~/.config/waybar/scripts/media.sh" // Script in resources folder
-    },
-    "custom/power": {
-        "format": "󰤆",
-        "tooltip": false,
-        "on-click": "wlogout"
-    },
- 	"hyprland/workspaces": {
-    	"all-outputs": true,
-	"disable-scroll": false,
-        "on-click": "activate",
-	"show-special": true,
-        "format": "{icon}",
-        "format-icons": {
-            "default": "-",
-            "1": "1",
-            "2": "2",
-            "3": "3",
-            "4": "4",
-            "5": "5",
-            "6": "6",
-            "7": "7",
-            "8": "8",
-            "9": "9",
-            "active": "-",
-            "urgent": "-",
-        },
-       "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-        },
-	"sort-by-number": true,
-    },
+        "exec": "/usr/bin/python3 $HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null" // Script in resources folder
+    }
 }

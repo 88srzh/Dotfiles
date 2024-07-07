@@ -1,121 +1,18 @@
-@import "mocha.css";
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
 
-* {
-  border: none;
-  border-radius: 0;
-  min-height: 0;
-  font-family: Material Design Icons, JetBrainsMono Nerd Font;
-  font-size: 16px;
-  color: #66ACED;
-}
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
 
-window#waybar {
-  background-color: rgba(0,0,0,0);
-  transition-duration: 0.5s;
-  font-size: 14px;
-}
-
-window#waybar.hidden {
-  opacity: 0.5;
-}
-
-#window {
-    font-weight: bold;
-    color: #f7768e;
-}
-
-#workspaces {
-  font-size: 16px;
-  background-color: transparent;
-  border-radius: 20px;
-}
-
-#workspaces button {
-  color: #dfdfdf;
-  border-bottom: 1px solid #ff4499;
-}
-
-#workspaces button.active {
-  border-bottom: 1px solid #ff4499;
-}
-
-#workspaces button:hover {
- box-shadow: inherit;
- text-shadow: inherit;
- color: @sky;
-}
-
-#workspaces button.urgent {
-  color: #c9545d;
-  border-color: #c9545d;
-}
-
-#custom-weather,
-#custom-updates,
-#custom-media,
-#custom-vpn,
-#disk,
-#workspaces,
-#temperature,
-#custom-power,
-#backlight,
-#clock,
-#window,
-#tray {
-  margin: 6px 3px;
-  padding: 4px 8px;
-  color: #181825;
-}
-
-#custom-power {
-  font-size:18px;
-  padding-right: 1rem;
-  color: @lavender;
-}
-
-
-#custom-logo {
-  padding-right: 7px;
-  padding-left: 7px;
-  margin-left: 5px;
-  font-size: 15px;
-  border-radius: 8px 0px 0px 8px;
-  color: @sky;
-}
-
-#custom-updates {
-  padding-right: 7px;
-  padding-left: 7px;
-  margin-left: 5px;
-  font-size: 15px;
-  color: @sky;
-  border-radius: 8px 0px 0px 8px;
-  background-color: transparent;
-}
-
-#custom-weather {
-  color: @green;
-}
-
-#custom-vpn {
-  color: @teal;
-}
-
-#disk {
-  color: @mauve;
-}
-
-#temperature {
-  color: @red;
-}
-#temperature.critical {
-  color: @red;
-}
-
-#custom-media {
-  color: @green;
-}
-
+/*
+Arc-Dark Color Scheme
+*/
 @keyframes blink-warning {
     70% {
         color: white;
@@ -138,24 +35,218 @@ window#waybar.hidden {
     }
 }
 
-#backlight {
-  color: #fab387;
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+    border: 10px;
+    border-color: black;
+    border-radius: 0;
+    min-height: 0;
+    margin: 1px;
+    padding: 0;
+    /* color: #66ACED; */
+    color: black;
 }
 
+
+/* The whole bar */
+window#waybar {
+    /* color: #dfdfdf; */
+    /* background-color: rgba(0,0,0,0.8); */
+    /* background-color: rgba(8,0,37,0.85); */
+    background-color: rgba(0,0,0,0);
+    /* font-family: JetBrains Mono Nerd Font; */
+    font-family: Intel One Mono Nerd Font;
+    font-size: 14px;
+    /* border-radius: 22px; */
+}
+
+/* Every modules */
+#battery,
+#clock,
+#backlight,
+#cpu,
+#custom-keyboard-layout,
+#memory,
+#mode,
+#custom-weather,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#idle_inhibitor,
+#window,
+#custom-power,
+#workspaces,
+#custom-media,
+#custom-PBPbattery {
+    padding:0.25rem 0.75rem;
+    margin: 1px 6px;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 10px;
+    font-weight: bold;
+    border-width: 10px;
+    box-shadow: inset 0 0 0 3px black;
+}
+
+/* -----------------------------------------------------------------------------
+ * Modules styles
+ * -------------------------------------------------------------------------- */
 
 #clock {
-  font-family: JetBrainsMono Nerd Font;
-  color: #cba6f7;
+    /* color: #ff4499; */
+    /* color: #73daca; */
+	color: black;
 }
 
-
-tooltip {
-border-radius: 8px;
-padding: 15px;
-background-color: #131822;
+#custom-weather {
+    color: #ff4499;
 }
 
-tooltip label {
-padding: 5px;
-background-color: #131822;
+#battery {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.warning {
+    color: orange;
+}
+
+#battery.critical {
+    color: red;
+}
+
+#battery.warning.discharging {
+    animation-name: blink-warning;
+    animation-duration: 3s;
+}
+
+#battery.critical.discharging {
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#cpu {
+    color: #f7768e;
+}
+
+#cpu.warning {
+    color: orange;
+}
+
+#cpu.critical {
+    color: red;
+}
+
+#memory {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    color: #f7768e;
+}
+
+#memory.warning {
+    color: orange;
+ }
+
+#memory.critical {
+    color: red;
+    animation-name: blink-critical;
+    animation-duration: 2s;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+#mode {
+    /* background: @highlight; */
+    /* background: #dfdfdf; */
+    border-bottom: 3px transparent;
+    color:#ff4499;
+    margin-left: 5px;
+    padding: 7px;
+}
+
+#network.disconnected {
+    color: orange;
+}
+
+#pulseaudio {
+    /* color: #bb9af7; */
+    border-left: 0px;
+    border-right: none;
+    margin-right: 0;
+    border-radius: 10px 0 0 10px;
+}
+
+/* #pulseaudio.muted { */
+/*     color: #ff4499; */
+/* } */
+/**/
+#pulseaudio.microphone {
+    border-left: none;
+    border-right: 0px;
+    margin-left: 0;
+    padding-left: 2px;
+    border-radius: 0 10px 10px 0;
+}
+
+/* #pulseaudio.microphone.muted { */
+/*     color: #ff4499; */
+/* } */
+
+
+#temperature.critical {
+    color: red;
+}
+
+#window {
+    font-weight: bold;
+    color: #f7768e;
+}
+
+#custom-media {
+    /* color: #bb9af7; */
+}
+
+#workspaces {
+    font-size:16px;
+    /* background-color: rgba(0,0,0,0.8); */
+    border-radius: 10px;
+}
+
+#workspaces button {
+    border-bottom: 3px solid transparent;
+    margin-bottom: 0px;
+    color: #dfdfdf;
+}
+
+#workspaces button.active {
+    border-bottom: 1px solid  white;
+    margin-bottom: 1px;
+    padding-left:0;
+}
+
+#workspaces button.urgent {
+    border-color: #c9545d;
+    color: #c9545d;
+}
+
+#custom-power {
+    font-size:18px;
+    padding-right: 1rem;
+}
+
+#custom-launcher {
+    font-size:15px;
+    margin-left:15px;
+    margin-right:10px;
+}
+
+#backlight.icon {
+    padding-right:1px;
+    font-size: 13px;
 }
