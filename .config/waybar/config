@@ -5,7 +5,7 @@
     "margin": 5,
 
     // If height property would be not present, it'd be calculated dynamically
-    "height": 30,
+    "height": 38,
 
     "modules-left": [
         // "custom/launcher",
@@ -28,9 +28,9 @@
         // "backlight#icon",
         // "backlight#value",
         "pulseaudio",
-    "pulseaudio#microphone",
-        "network",
-        "battery",
+        "pulseaudio#microphone",
+        // "network",
+	"battery",
     ],
 
     // Modules
@@ -138,6 +138,8 @@
             "4": "",
             "5": "󰡨",
             "6": "",
+    	    "7": "",
+	    "8": "",
         }
     },
 
