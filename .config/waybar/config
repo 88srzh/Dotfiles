@@ -20,6 +20,7 @@
 
     "modules-right": [
         "tray",
+	"custom/weather",
         // "idle_inhibitor",
         // "memory",
         // "cpu",
@@ -178,7 +179,7 @@
     // to use the weather module replace <your_location> with your city or town
     // note: do not use spaces: new york would be newyork
     "custom/weather": {
-        "exec": "~/.config/waybar/scripts/weather.sh tampa", 
+        "exec": "~/.config/waybar/scripts/weather.sh Izhevsk", 
         "return-type": "json",
         "interval": 600,
     },
