@@ -83,6 +83,7 @@ window#waybar {
 #workspaces,
 #custom-media,
 #custom-vpn,
+#language,
 #custom-PBPbattery {
     padding:0.25rem 0.75rem;
     margin: 1px 6px;
@@ -263,5 +264,9 @@ window#waybar {
 }
 
 #custom-vpn {
+    box-shadow: inset 0 0 0 3px black;
+}
+
+#language {
     box-shadow: inset 0 0 0 3px black;
 }
