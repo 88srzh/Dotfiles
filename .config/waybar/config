@@ -21,17 +21,10 @@
     "modules-right": [
         "tray",
 	"custom/weather",
-        // "idle_inhibitor",
-        // "memory",
-        // "cpu",
+	"custom/vpn",
         "custom/keyboard-layout",
-        //"custom/PBPbattery",
-        // "backlight#icon",
-        // "backlight#value",
         "pulseaudio",
         "pulseaudio#microphone",
-        // "network",
-	"battery",
     ],
 
     // Modules
@@ -68,6 +61,18 @@
         // "format-alt": " {:%e %b %Y}", // Icon: calendar-alt
         "format": "{:%e %b %Y %H:%M} ",
         "tooltip-format": "{:%e %B %Y}"
+    },
+
+    "custom/vpn": {
+ 	"format": "VPN {icon}",
+    	"format-icons": {
+	"active": "",
+	"default": ""
+	},
+    "exec": "echo '{\"class\": \"connected\"}'",
+    "exec-if": "test -d /proc/sys/net/ipv4/conf/client",
+    "return-type": "json",
+    "interval": 5
     },
 
     "cpu": {
