@@ -4,7 +4,7 @@
 
 [**Terminal**](https://sw.kovidgoyal.net/kitty/) • [**Shell**](https://fishshell.com/) • [**DE**](https://hyprland.org/) • [**Editor**](https://neovim.io/)
 <p>
-<img src="https://raw.githubusercontent.com/88srzh/Dotfiles/main/screen/1721509552_grim.png" alt="popular people" width="2500">
+<img src="https://raw.githubusercontent.com/88srzh/Dotfiles/main/screen/rose.png" alt="popular people" width="2500">
 </p>
 
 </div>
