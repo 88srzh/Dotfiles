@@ -47,21 +47,22 @@ Arc-Dark Color Scheme
     min-height: 0;
     margin: 1px;
     padding: 0;
-    /* color: #66ACED; */
     color: black;
+    background-color: transparent;
 }
 
 
 /* The whole bar */
 window#waybar {
-    /* color: #dfdfdf; */
-    /* background-color: rgba(0,0,0,0.8); */
-    /* background-color: rgba(8,0,37,0.85); */
     background-color: rgba(0,0,0,0);
     /* font-family: JetBrains Mono Nerd Font; */
     font-family: Intel One Mono Nerd Font;
     font-size: 14px;
-    /* border-radius: 22px; */
+}
+
+window#waybar.right {
+    box-shadow: inset 0 -3px;
+    background-color: pink;
 }
 
 /* Every modules */
@@ -99,14 +100,10 @@ window#waybar {
  * -------------------------------------------------------------------------- */
 
 #clock {
-    /* color: #ff4499; */
-    /* color: #73daca; */
-    color: black;
     box-shadow: inset 0 0 0 3px black;
 }
 
 #custom-weather {
-    color: black;
     box-shadow: inset 0 0 0 3px black;
 }
 
@@ -166,8 +163,6 @@ window#waybar {
 }
 
 #mode {
-    /* background: @highlight; */
-    /* background: #dfdfdf; */
     border-bottom: 3px transparent;
     color:#ff4499;
     margin-left: 5px;
@@ -179,7 +174,7 @@ window#waybar {
 }
 
 #pulseaudio {
-    /* color: #bb9af7; */
+    color: black;
     border-left: 0px;
     border-right: none;
     margin-right: 0;
