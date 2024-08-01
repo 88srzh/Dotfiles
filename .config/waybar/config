@@ -67,7 +67,7 @@
         "interval": 10,
         // "format-alt": " {:%e %b %Y}", // Icon: calendar-alt
         "format": "{:%e %b %Y %H:%M} ",
-	"tooltip-format": "<tt><small>{calendar}</small></tt>",
+	"tooltip-format": "<tt><big>{calendar}</big></tt>",
 	"calendar": {
                     "mode"          : "month",
                     "mode-mon-col"  : 3,
