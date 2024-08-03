@@ -74,9 +74,9 @@
                     "weeks-pos"     : "right",
                     "on-scroll"     : 1,
                     "format": {
-                              "months":     "<span color='#ffead3'><b>{}</b></span>",
-                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              "months":     "<span color='black'>{}</span>",
+                              "days":       "<span color='black'>{}</span>",
+                              "today":      "<span color='grey'><u>{}</u></span>"
                               }
                     },
 
