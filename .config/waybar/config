@@ -234,7 +234,7 @@
 
     "custom/power": {
         "format":"⏻",
-        "on-click": "exec ~/.config/waybar/scripts/power-menu.sh",
+        "on-click": "wlogout",
         "tooltip": false,
     },
 
