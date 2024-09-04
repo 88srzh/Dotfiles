@@ -12,8 +12,9 @@ by Stephan Raabe (2023)
 
 /* -----------------------------------------------------
  * Import Pywal colors 
- * ----------------------------------------------------- */
+ * ----------------------------------------------------- 
 @import '../../.cache/wal/colors-wlogout.css';
+*/
 
 /* -----------------------------------------------------
  * General 
@@ -27,7 +28,7 @@ by Stephan Raabe (2023)
 }
 
 window {
-	background: url("~/Pictures/Wallpapers/2.png");
+	background: url("~/Pictures/Wallpapers/pink.jpg");
 	background-size: cover;
 }
 
