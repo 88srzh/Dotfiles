@@ -1,18 +1,3 @@
-/* =============================================================================
- *
- * Waybar configuration
- *
- * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
- *
- * =========================================================================== */
-
-/* -----------------------------------------------------------------------------
- * Keyframes
- * -------------------------------------------------------------------------- */
-
-/*
-Arc-Dark Color Scheme
-*/
 @keyframes blink-warning {
     70% {
         color: white;
@@ -41,14 +26,14 @@ Arc-Dark Color Scheme
 
 /* Reset all styles */
 * {
-    border: 10px;
+    border: 2px;
     border-color: black;
     border-radius: 0;
     min-height: 0;
     margin: 1px;
     padding: 0;
     color: black;
-    background-color: transparent;
+    background-color: rgba(255,255,255,0);
 }
 
 
@@ -62,7 +47,7 @@ window#waybar {
 
 window#waybar.right {
     box-shadow: inset 0 -3px;
-    background-color: pink;
+    background-color: white;
 }
 
 /* Every modules */
@@ -165,8 +150,8 @@ window#waybar.right {
 #mode {
     border-bottom: 3px transparent;
     color:#ff4499;
-    margin-left: 5px;
-    padding: 7px;
+    margin-left: 1px;
+    padding: 1px;
 }
 
 #network.disconnected {
@@ -219,7 +204,6 @@ window#waybar.right {
 
 #workspaces {
     font-size:16px;
-    /* background-color: rgba(0,0,0,0.8); */
     border-radius: 10px;
     box-shadow: inset 0 0 0 3px black;
 }
@@ -237,13 +221,14 @@ window#waybar.right {
 }
 
 #workspaces button.urgent {
-    border-color: #c9545d;
-    color: #c9545d;
+    border-color: white;
+    color: white;
 }
 
 #custom-power {
     font-size:18px;
     padding-right: 1rem;
+    box-shadow: inset 0 0 0 3px black;
 }
 
 #custom-launcher {
