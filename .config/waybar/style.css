@@ -26,21 +26,22 @@
 
 /* Reset all styles */
 * {
-    border: 2px;
+    border: 10px;
     border-color: black;
-    border-radius: 0;
+    border-radius: 2;
     min-height: 0;
     margin: 1px;
     padding: 0;
     color: black;
-    background-color: rgba(255,255,255,0);
+    background-color: transparent;
 }
 
 
 /* The whole bar */
 window#waybar {
-    background-color: rgba(0,0,0,0);
-    /* font-family: JetBrains Mono Nerd Font; */
+    border: 2px;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.7);
     font-family: Intel One Mono Nerd Font;
     font-size: 14px;
 }
@@ -72,79 +73,22 @@ window#waybar.right {
 #language,
 #custom-PBPbattery {
     padding:0.25rem 0.75rem;
-    margin: 1px 6px;
-    background-color: rgba(255,255,255,0.8);
+    margin: 1px 1px;
+    background-color: transparent;
     border-radius: 10px;
     font-weight: bold;
     border-width: 10px;
-/*    box-shadow: inset 0 0 0 3px black; */
 }
 
 /* -----------------------------------------------------------------------------
  * Modules styles
  * -------------------------------------------------------------------------- */
 
-#clock {
-    box-shadow: inset 0 0 0 3px black;
-}
-
 #custom-weather {
-    box-shadow: inset 0 0 0 3px black;
 }
 
-#battery {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#battery.warning {
-    color: orange;
-}
-
-#battery.critical {
-    color: red;
-}
-
-#battery.warning.discharging {
-    animation-name: blink-warning;
-    animation-duration: 3s;
-}
-
-#battery.critical.discharging {
-    animation-name: blink-critical;
-    animation-duration: 2s;
-}
-
-#cpu {
-    color: #f7768e;
-}
-
-#cpu.warning {
-    color: orange;
-}
-
-#cpu.critical {
-    color: red;
-}
-
-#memory {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    color: #f7768e;
-}
-
-#memory.warning {
-    color: orange;
- }
-
-#memory.critical {
-    color: red;
-    animation-name: blink-critical;
-    animation-duration: 2s;
-    padding-left:5px;
-    padding-right:5px;
+#clock {
+font-size: 18px;
 }
 
 #mode {
@@ -166,10 +110,6 @@ window#waybar.right {
     border-radius: 10px 0 0 10px;
 }
 
-/* #pulseaudio.muted { */
-/*     color: #ff4499; */
-/* } */
-/**/
 #pulseaudio.microphone {
     border-left: none;
     border-right: 0px;
@@ -178,34 +118,9 @@ window#waybar.right {
     border-radius: 0 10px 10px 0;
 }
 
-/* #pulseaudio.microphone.muted { */
-/*     color: #ff4499; */
-/* } */
-
-
-#temperature.critical {
-    color: red;
-}
-
-#window {
-    font-weight: bold;
-    color: #f7768e;
-    box-shadow: inset 0 0 0 3px black;
-}
-
-#custom-media {
-    /* color: #bb9af7; */
-    box-shadow: inset 0 0 0 3px black;
-}
-
-#tray {
-    box-shadow: inset 0 0 0 3px black;
-}
-
 #workspaces {
     font-size:16px;
     border-radius: 10px;
-    box-shadow: inset 0 0 0 3px black;
 }
 
 #workspaces button {
@@ -215,7 +130,7 @@ window#waybar.right {
 }
 
 #workspaces button.active {
-    border-bottom: 1px solid  red;
+    border-bottom: 1px solid  black;
     margin-bottom: 1px;
     padding-left:0;
 }
@@ -225,17 +140,9 @@ window#waybar.right {
     color: white;
 }
 
-#custom-power {
+ #custom-power {
     font-size:18px;
-    padding-right: 1rem;
-    box-shadow: inset 0 0 0 3px black;
-}
-
-#custom-launcher {
-    font-size:15px;
-    margin-left:15px;
-    margin-right:10px;
-    box-shadow: inset 0 0 0 3px black;
+    padding-right: 2rem;
 }
 
 #backlight.icon {
@@ -244,9 +151,5 @@ window#waybar.right {
 }
 
 #custom-vpn {
-    box-shadow: inset 0 0 0 3px black;
-}
-
-#language {
     box-shadow: inset 0 0 0 3px black;
 }
