@@ -90,7 +90,8 @@ export const keybindList = [[
         "binds": [
             { "keys": ["󰖳", "+", "Enter"], "action": "Launch terminal: foot" },
             { "keys": ["󰖳", "+", "F"], "action": "Launch browser: Firefox" },
-            { "keys": ["󰖳", "+", "T"], "action": "Launch messenget: Telegram" },
+            { "keys": ["󰖳", "+", "T"], "action": "Launch messenger: Telegram" },
+            { "keys": ["󰖳", "+", "O"], "action": "Launch editor: Obsidian" },
             { "keys": ["󰖳", "+", "X"], "action": "Launch editor: GNOME Text Editor" },
             { "keys": ["󰖳", "+", "I"], "action": "Launch settings: GNOME Control center" }
         ],
