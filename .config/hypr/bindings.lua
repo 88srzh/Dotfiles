@@ -29,4 +29,5 @@
 --
 --
 hl.unbind("SUPER + SHIFT + A")
-o.bind("SUPER + SHIFT + A", "Claude", { webapp = "https://claude.ai/new" })
+o.bind("SUPER + SHIFT + A", "Claude", { webapp = "https://claude.ai/new" }) -- CLaude
+o.bind("SUPER + SHIFT + T", "bpytop", "alacritty --class=bpytop -e bpytop") -- bpytop
