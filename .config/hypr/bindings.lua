@@ -19,6 +19,7 @@
 -- This example changes SUPER+SPACE from the launcher to the Omarchy root menu.
 -- hl.unbind("SUPER + SPACE")
 -- o.bind("SUPER + SPACE", "Omarchy menu", "omarchy-menu toggle root")
+
 -- Disable a default binding without replacing it.
 -- hl.unbind("SUPER + SHIFT + B")
 
@@ -26,8 +27,7 @@
 -- o.bind("SUPER + SHIFT + S", nil, "omarchy-capture-screenshot")
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
 -- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
---
---
+
+-- Replace ChatGPT with Claude Code (was: SUPER+SHIFT+A -> ChatGPT webapp)
 hl.unbind("SUPER + SHIFT + A")
-o.bind("SUPER + SHIFT + A", "Claude", { webapp = "https://claude.ai/new" }) -- CLaude
--- o.bind("SUPER + SHIFT + T", "bpytop", "alacritty --class=bpytop -e bpytop") -- bpytop
+o.bind("SUPER + SHIFT + A", "Claude Code", "omarchy-launch-terminal claude")
