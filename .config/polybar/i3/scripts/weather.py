@@ -13,10 +13,12 @@
 # LANG included thanks to krive001 on discord
 
 
+import os
+
 import requests
 
 CITY = "554840"
-API_KEY = "49b9b17561636e4644bf713f4c7c1a13"
+API_KEY = os.environ["OPENWEATHER_API_KEY"]
 UNITS = "Metric"
 UNIT_KEY = "C"
 #UNIT_KEY = "F"
