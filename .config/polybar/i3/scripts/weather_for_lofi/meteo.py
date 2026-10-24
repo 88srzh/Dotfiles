@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 
 import json
+import os
 import urllib.request
 
-# sign in at https://openweathermap.org/api to get an API KEY
-APPID = "49b9b17561636e4644bf713f4c7c1a13"
+# sign in at https://openweathermap.org/api to get an API KEY,
+# then export it as OPENWEATHER_API_KEY
+APPID = os.environ["OPENWEATHER_API_KEY"]
 
 # get you city ID at http://bulk.openweathermap.org/sample/
 CITYID = "554840"

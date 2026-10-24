@@ -7,8 +7,7 @@ OPENWEATHER_URL = "https://api.openweathermap.org/data/2.5/weather"
 
 # Get your API KEY here https://openweathermap.org/api,
 # and set an environment variable for OPENWEATHER_API_KEY with your API KEY.
-OPENWEATHER_API_KEY = "49b9b17561636e4644bf713f4c7c1a13"
-API_KEY = os.environ.get("OPENWEATHER_API_KEY", OPENWEATHER_API_KEY)
+API_KEY = os.environ["OPENWEATHER_API_KEY"]
 
 
 def get_city() -> str:
